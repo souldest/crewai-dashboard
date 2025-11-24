@@ -1,4 +1,4 @@
-#!/home/wsl/crewai/venv/bin/python
+#!/home/wsl/crewai/AI-Data-Solutions/venv/bin/python3
 import sys
 from jsonschema.cli import main
 if __name__ == '__main__':

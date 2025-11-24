@@ -16,23 +16,28 @@ else
     pip install -r requirements.txt
 fi
 
-# 2️⃣ PostgreSQL-Port und Host aus database.py sauber auslesen
+# 2️⃣ DB_HOST und DB_PORT aus backend/database.py oder Defaults
 if [ -f "backend/database.py" ]; then
-    DB_PORT=$(python3 -c "from backend.database import DB_PORT; print(DB_PORT)")
     DB_HOST=$(python3 -c "from backend.database import DB_HOST; print(DB_HOST)")
+    DB_PORT=$(python3 -c "from backend.database import DB_PORT; print(DB_PORT)")
 else
-    echo "⚠️ backend/database.py nicht gefunden, verwende Standardport 5432"
-    DB_PORT=5432
+    echo "⚠️ backend/database.py nicht gefunden, verwende Standardwerte"
     DB_HOST="localhost"
+    DB_PORT=5432
 fi
 
-# 3️⃣ Prüfen, ob PostgreSQL läuft
-PG_RUNNING=$(pg_isready -h $DB_HOST -p $DB_PORT)
-if [[ $PG_RUNNING != *"accepting connections"* ]]; then
-    echo "⚠️ PostgreSQL nicht erreichbar auf $DB_HOST:$DB_PORT. Bitte starten Sie den DB-Server."
-    exit 1
+# 3️⃣ Lokale PostgreSQL-Prüfung nur, wenn DB_HOST=localhost
+if [[ "$DB_HOST" == "localhost" ]]; then
+    PG_RUNNING=$(pg_isready -h $DB_HOST -p $DB_PORT)
+    if [[ $PG_RUNNING != *"accepting connections"* ]]; then
+        echo "⚠️ PostgreSQL nicht erreichbar auf $DB_HOST:$DB_PORT. Bitte starten Sie den DB-Server."
+        exit 1
+    else
+        echo "✅ Lokale PostgreSQL erreichbar auf $DB_HOST:$DB_PORT"
+    fi
+else
+    echo "🌐 Azure PostgreSQL wird verwendet, lokale Prüfung übersprungen"
 fi
-echo "✅ PostgreSQL erreichbar auf $DB_HOST:$DB_PORT"
 
 # 4️⃣ Backend prüfen
 if [ ! -f "backend/database.py" ] || [ ! -f "backend/models.py" ]; then
