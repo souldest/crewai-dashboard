@@ -1,0 +1,127 @@
+date,lead_id,score,recommended_action,day,action
+2025-11-22,2025-11-22_L1,89,Contact & Follow-up,1,Contact & Follow-up
+2025-11-23,2025-11-22_L1,89,Contact & Follow-up,2,Contact & Follow-up
+2025-11-22,2025-11-22_L2,84,Contact & Follow-up,1,Contact & Follow-up
+2025-11-22,2025-11-22_L3,98,Contact & Follow-up,1,Contact & Follow-up
+2025-11-23,2025-11-22_L3,98,Contact & Follow-up,2,Contact & Follow-up
+2025-11-24,2025-11-22_L3,98,Contact & Follow-up,3,Contact & Follow-up
+2025-11-22,2025-11-22_L4,76,Contact & Follow-up,1,Contact & Follow-up
+2025-11-23,2025-11-22_L4,76,Contact & Follow-up,2,Contact & Follow-up
+2025-11-22,2025-11-22_L5,92,Contact & Follow-up,1,Contact & Follow-up
+2025-11-23,2025-11-22_L5,92,Contact & Follow-up,2,Contact & Follow-up
+2025-11-22,2025-11-22_L6,80,Contact & Follow-up,1,Contact & Follow-up
+2025-11-23,2025-11-22_L6,80,Contact & Follow-up,2,Contact & Follow-up
+2025-11-24,2025-11-22_L6,80,Contact & Follow-up,3,Contact & Follow-up
+2025-11-25,2025-11-22_L6,80,Contact & Follow-up,4,Contact & Follow-up
+2025-11-22,2025-11-22_L7,90,Contact & Follow-up,1,Contact & Follow-up
+2025-11-23,2025-11-22_L7,90,Contact & Follow-up,2,Contact & Follow-up
+2025-11-22,2025-11-22_L8,77,Contact & Follow-up,1,Contact & Follow-up
+2025-11-23,2025-11-22_L8,77,Contact & Follow-up,2,Contact & Follow-up
+2025-11-22,2025-11-22_L9,72,Contact & Follow-up,1,Contact & Follow-up
+2025-11-23,2025-11-22_L9,72,Contact & Follow-up,2,Contact & Follow-up
+2025-11-22,2025-11-22_L10,90,Contact & Follow-up,1,Contact & Follow-up
+2025-11-23,2025-11-22_L10,90,Contact & Follow-up,2,Contact & Follow-up
+2025-11-24,2025-11-22_L10,90,Contact & Follow-up,3,Contact & Follow-up
+2025-11-25,2025-11-22_L10,90,Contact & Follow-up,4,Contact & Follow-up
+2025-11-22,2025-11-22_L11,31,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L11,31,Info-Mail,2,Info-Mail
+2025-11-22,2025-11-22_L12,53,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L12,53,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L12,53,Info-Mail,3,Info-Mail
+2025-11-22,2025-11-22_L13,59,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L13,59,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L13,59,Info-Mail,3,Info-Mail
+2025-11-25,2025-11-22_L13,59,Info-Mail,4,Info-Mail
+2025-11-22,2025-11-22_L14,67,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L14,67,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L14,67,Info-Mail,3,Info-Mail
+2025-11-22,2025-11-22_L15,31,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L15,31,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L15,31,Info-Mail,3,Info-Mail
+2025-11-25,2025-11-22_L15,31,Info-Mail,4,Info-Mail
+2025-11-22,2025-11-22_L16,50,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L16,50,Info-Mail,2,Info-Mail
+2025-11-22,2025-11-22_L17,62,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L17,62,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L17,62,Info-Mail,3,Info-Mail
+2025-11-22,2025-11-22_L18,41,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L18,41,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L18,41,Info-Mail,3,Info-Mail
+2025-11-25,2025-11-22_L18,41,Info-Mail,4,Info-Mail
+2025-11-22,2025-11-22_L19,51,Info-Mail,1,Info-Mail
+2025-11-22,2025-11-22_L20,54,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L20,54,Info-Mail,2,Info-Mail
+2025-11-22,2025-11-22_L21,56,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L21,56,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L21,56,Info-Mail,3,Info-Mail
+2025-11-25,2025-11-22_L21,56,Info-Mail,4,Info-Mail
+2025-11-22,2025-11-22_L22,57,Info-Mail,1,Info-Mail
+2025-11-22,2025-11-22_L23,45,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L23,45,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L23,45,Info-Mail,3,Info-Mail
+2025-11-25,2025-11-22_L23,45,Info-Mail,4,Info-Mail
+2025-11-22,2025-11-22_L24,44,Info-Mail,1,Info-Mail
+2025-11-22,2025-11-22_L25,32,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L25,32,Info-Mail,2,Info-Mail
+2025-11-22,2025-11-22_L26,66,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L26,66,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L26,66,Info-Mail,3,Info-Mail
+2025-11-22,2025-11-22_L27,36,Info-Mail,1,Info-Mail
+2025-11-22,2025-11-22_L28,50,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L28,50,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L28,50,Info-Mail,3,Info-Mail
+2025-11-25,2025-11-22_L28,50,Info-Mail,4,Info-Mail
+2025-11-22,2025-11-22_L29,38,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L29,38,Info-Mail,2,Info-Mail
+2025-11-22,2025-11-22_L30,68,Info-Mail,1,Info-Mail
+2025-11-22,2025-11-22_L31,47,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L31,47,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L31,47,Info-Mail,3,Info-Mail
+2025-11-25,2025-11-22_L31,47,Info-Mail,4,Info-Mail
+2025-11-22,2025-11-22_L32,33,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L32,33,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L32,33,Info-Mail,3,Info-Mail
+2025-11-25,2025-11-22_L32,33,Info-Mail,4,Info-Mail
+2025-11-22,2025-11-22_L33,54,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L33,54,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L33,54,Info-Mail,3,Info-Mail
+2025-11-25,2025-11-22_L33,54,Info-Mail,4,Info-Mail
+2025-11-22,2025-11-22_L34,43,Info-Mail,1,Info-Mail
+2025-11-22,2025-11-22_L35,38,Info-Mail,1,Info-Mail
+2025-11-22,2025-11-22_L36,55,Info-Mail,1,Info-Mail
+2025-11-22,2025-11-22_L37,31,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L37,31,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L37,31,Info-Mail,3,Info-Mail
+2025-11-22,2025-11-22_L38,49,Info-Mail,1,Info-Mail
+2025-11-22,2025-11-22_L39,57,Info-Mail,1,Info-Mail
+2025-11-22,2025-11-22_L40,36,Info-Mail,1,Info-Mail
+2025-11-22,2025-11-22_L41,37,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L41,37,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L41,37,Info-Mail,3,Info-Mail
+2025-11-22,2025-11-22_L42,64,Info-Mail,1,Info-Mail
+2025-11-22,2025-11-22_L43,43,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L43,43,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L43,43,Info-Mail,3,Info-Mail
+2025-11-25,2025-11-22_L43,43,Info-Mail,4,Info-Mail
+2025-11-22,2025-11-22_L44,46,Info-Mail,1,Info-Mail
+2025-11-22,2025-11-22_L45,65,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L45,65,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L45,65,Info-Mail,3,Info-Mail
+2025-11-25,2025-11-22_L45,65,Info-Mail,4,Info-Mail
+2025-11-22,2025-11-22_L46,69,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L46,69,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L46,69,Info-Mail,3,Info-Mail
+2025-11-25,2025-11-22_L46,69,Info-Mail,4,Info-Mail
+2025-11-22,2025-11-22_L47,33,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L47,33,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L47,33,Info-Mail,3,Info-Mail
+2025-11-25,2025-11-22_L47,33,Info-Mail,4,Info-Mail
+2025-11-22,2025-11-22_L48,31,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L48,31,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L48,31,Info-Mail,3,Info-Mail
+2025-11-22,2025-11-22_L49,35,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L49,35,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L49,35,Info-Mail,3,Info-Mail
+2025-11-22,2025-11-22_L50,33,Info-Mail,1,Info-Mail
+2025-11-23,2025-11-22_L50,33,Info-Mail,2,Info-Mail
+2025-11-24,2025-11-22_L50,33,Info-Mail,3,Info-Mail

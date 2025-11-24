@@ -1,0 +1,51 @@
+date,lead_id,company,city,score,status,recommended_action
+2025-11-22,2025-11-22_L1,Firma_01,Düsseldorf,89,Qualifiziert,Contact & Follow-up
+2025-11-22,2025-11-22_L2,Firma_02,Berlin,84,Qualifiziert,Contact & Follow-up
+2025-11-22,2025-11-22_L3,Firma_03,Berlin,98,Qualifiziert,Contact & Follow-up
+2025-11-22,2025-11-22_L4,Firma_04,Düsseldorf,76,Qualifiziert,Contact & Follow-up
+2025-11-22,2025-11-22_L5,Firma_05,München,92,Qualifiziert,Contact & Follow-up
+2025-11-22,2025-11-22_L6,Firma_06,Hamburg,80,Qualifiziert,Contact & Follow-up
+2025-11-22,2025-11-22_L7,Firma_07,Hamburg,90,Qualifiziert,Contact & Follow-up
+2025-11-22,2025-11-22_L8,Firma_08,Hamburg,77,Qualifiziert,Contact & Follow-up
+2025-11-22,2025-11-22_L9,Firma_09,Düsseldorf,72,Qualifiziert,Contact & Follow-up
+2025-11-22,2025-11-22_L10,Firma_10,Berlin,90,Qualifiziert,Contact & Follow-up
+2025-11-22,2025-11-22_L11,Firma_11,Düsseldorf,31,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L12,Firma_12,Düsseldorf,53,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L13,Firma_13,Frankfurt,59,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L14,Firma_14,Berlin,67,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L15,Firma_15,Frankfurt,31,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L16,Firma_16,Köln,50,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L17,Firma_17,Berlin,62,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L18,Firma_18,Berlin,41,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L19,Firma_19,Berlin,51,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L20,Firma_20,Hamburg,54,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L21,Firma_21,Hamburg,56,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L22,Firma_22,Frankfurt,57,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L23,Firma_23,Frankfurt,45,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L24,Firma_24,Berlin,44,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L25,Firma_25,Frankfurt,32,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L26,Firma_26,Hamburg,66,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L27,Firma_27,Düsseldorf,36,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L28,Firma_28,Düsseldorf,50,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L29,Firma_29,Düsseldorf,38,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L30,Firma_30,Frankfurt,68,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L31,Firma_31,Köln,47,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L32,Firma_32,Hamburg,33,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L33,Firma_33,Köln,54,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L34,Firma_34,Frankfurt,43,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L35,Firma_35,München,38,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L36,Firma_36,Berlin,55,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L37,Firma_37,Hamburg,31,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L38,Firma_38,Düsseldorf,49,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L39,Firma_39,Köln,57,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L40,Firma_40,München,36,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L41,Firma_41,München,37,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L42,Firma_42,Hamburg,64,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L43,Firma_43,Hamburg,43,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L44,Firma_44,München,46,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L45,Firma_45,Berlin,65,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L46,Firma_46,Berlin,69,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L47,Firma_47,Köln,33,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L48,Firma_48,Berlin,31,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L49,Firma_49,München,35,Nicht qualifiziert,Info-Mail
+2025-11-22,2025-11-22_L50,Firma_50,München,33,Nicht qualifiziert,Info-Mail
