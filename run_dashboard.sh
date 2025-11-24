@@ -29,11 +29,11 @@ fi
 # 3️⃣ Lokale PostgreSQL-Prüfung nur, wenn DB_HOST=localhost
 if [[ "$DB_HOST" == "localhost" ]]; then
     PG_RUNNING=$(pg_isready -h $DB_HOST -p $DB_PORT)
-    if [[ $PG_RUNNING != *"accepting connections"* ]]; then
+    if [[ $PG_RUNNING == *"accepting connections"* ]]; then
+        echo "✅ Lokale PostgreSQL erreichbar auf $DB_HOST:$DB_PORT"
+    else
         echo "⚠️ PostgreSQL nicht erreichbar auf $DB_HOST:$DB_PORT. Bitte starten Sie den DB-Server."
         exit 1
-    else
-        echo "✅ Lokale PostgreSQL erreichbar auf $DB_HOST:$DB_PORT"
     fi
 else
     echo "🌐 Azure PostgreSQL wird verwendet, lokale Prüfung übersprungen"
@@ -47,4 +47,4 @@ fi
 
 # 5️⃣ Streamlit starten
 echo "🌐 Starte Streamlit Dashboard auf http://localhost:8501"
-streamlit run frontend/streamlit_demo.py
+streamlit run frontend/streamlit_demo.py --server.port 8501
