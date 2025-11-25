@@ -6,6 +6,28 @@ from datetime import datetime
 import numpy as np
 from marketing_demo import HEADER, CREWAI, AGENTEN, VORTEILE, KONTAKT
 
+# --- HEADER ---
+st.markdown(f"<h1 style='text-align:center'>{HEADER}</h1>", unsafe_allow_html=True)
+st.markdown("<hr>", unsafe_allow_html=True)
+
+# --- CREWAI Abschnitt ---
+st.subheader("CrewAI – Intelligente Agenten-Teams")
+st.markdown(CREWAI)
+
+# --- AGENTEN SECTION MIT EXPANDERN ---
+st.subheader("KI-Agenten nach Funktion")
+for kategorie, text in AGENTEN.items():
+    with st.expander(kategorie, expanded=False):
+        st.markdown(text)
+
+# --- VORTEILE ---
+st.subheader("Ihre Vorteile")
+st.markdown(VORTEILE)
+
+# --- KONTAKT ---
+st.subheader("Kontakt & Demo")
+st.markdown(KONTAKT)
+
 st.set_page_config(page_title="CrewAI Sales Dashboard", layout="wide")
 
 # -----------------------------
