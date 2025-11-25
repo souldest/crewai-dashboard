@@ -4,6 +4,7 @@ import plotly.express as px
 import random
 from datetime import datetime
 import numpy as np
+from marketing_demo import HEADER, CREWAI, AGENTEN, VORTEILE, KONTAKT
 
 st.set_page_config(page_title="CrewAI Sales Dashboard", layout="wide")
 
