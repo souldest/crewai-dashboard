@@ -304,7 +304,7 @@ elif selected_agent == "Proposal":
     """)
 
 # -----------------------------
-# KPIs & Vorteile Tab
+# KPIs Tab
 # -----------------------------
 elif selected_agent == "KPIs":
     st.header(f"KPIs & Vorteile – {selected_branch}")
