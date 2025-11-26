@@ -24,8 +24,8 @@ st.set_page_config(page_title="CrewAI Sales Dashboard", layout="wide")
 # HEADER
 st.markdown(
     f"""
-    <div style='text-align:center; padding:20px; background-color:#f0f8ff; border-radius:10px;'>
-        <h1 style='color:#0073e6; font-size:42px; margin-bottom:15px;'>{HEADER}</h1>
+    <div style='text-align:center; padding:25px; background-color:#f0f8ff; border-radius:10px; margin-bottom:10px;'>
+        <h1 style='color:#0073e6; font-size:38px; margin-bottom:15px;'>{HEADER.replace('\n','<br>')}</h1>
     </div>
     """,
     unsafe_allow_html=True
@@ -34,19 +34,20 @@ st.markdown(
 # CREWAI Abschnitt
 st.markdown(
     f"""
-    <div style='text-align:center; padding:15px; background-color:#e6f2ff; border-radius:10px; margin-top:10px;'>
-        <h2 style='color:#0073e6; font-size:32px; margin-bottom:10px;'>{CREWAI}</h2>
+    <div style='text-align:center; padding:20px; background-color:#e6f2ff; border-radius:10px; margin-bottom:10px;'>
+        <h2 style='color:#0073e6; font-size:30px; margin-bottom:12px;'>{CREWAI.replace('\n','<br>')}</h2>
     </div>
     """,
     unsafe_allow_html=True
 )
 
 # TECHNOLOGIEN Abschnitt
+tech_text = TECHNOLOGIEN.replace("\n", "<br>")  # Zeilenumbrüche in <br> umwandeln
 st.markdown(
     f"""
-    <div style='text-align:center; padding:15px; background-color:#ffffff; border-radius:10px; margin-top:10px;'>
-        <h3 style='color:#004080; font-size:28px; margin-bottom:10px;'>Technologien & Infrastruktur</h3>
-        <p style='font-size:16px; line-height:1.6; text-align:left; max-width:900px; margin:auto;'>{TECHNOLOGIEN}</p>
+    <div style='text-align:left; padding:20px; background-color:#ffffff; border-radius:10px; margin-bottom:15px;'>
+        <h3 style='color:#004080; font-size:26px; margin-bottom:12px; text-align:center;'>Technologien & Infrastruktur</h3>
+        <p style='font-size:16px; line-height:1.6; max-width:900px; margin:auto;'>{tech_text}</p>
     </div>
     """,
     unsafe_allow_html=True
