@@ -23,32 +23,41 @@ crewai_font_size = "22px"
 tech_title_font_size = "20px"
 text_font_size = "18px"
 
-# HEADER-Text vorbereiten
-header_text = HEADER.replace("\n", "<br>")
+# -----------------------------
+# HEADER Abschnitt
+# -----------------------------
+header_text = HEADER
 st.markdown(
-    f"<h1 style='color:#0073e6; font-size:{header_font_size}; margin-bottom:12px; text-align:center;'>{header_text}</h1>",
-    unsafe_allow_html=True
-)
-
-# CREWAI-Text vorbereiten
-crewai_text = CREWAI.replace("\n", "<br>")
-st.markdown(
-    f"<h2 style='color:#0073e6; font-size:{crewai_font_size}; margin-bottom:12px; text-align:center;'>{crewai_text}</h2>",
+    f"""
+    <div style='padding:20px; background-color:#f0f4f8; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
+        <h1 style='color:#0073e6; font-size:32px; margin-bottom:12px; text-align:center;'>{header_text}</h1>
+    </div>
+    """,
     unsafe_allow_html=True
 )
 
 # -----------------------------
-# Agenten-Text nach Funktion (unter CREWAI)
+# CREWAI Abschnitt
+# -----------------------------
+crewai_text = CREWAI
+st.markdown(
+    f"""
+    <div style='padding:15px; background-color:#e6f0ff; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
+        <h2 style='color:#004080; font-size:26px; margin-bottom:12px; text-align:center;'>CrewAI – Wachstumsbooster</h2>
+        <p style='font-size:18px; line-height:1.6; text-align:left;'>{crewai_text}</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# -----------------------------
+# Agenten-Text nach Funktion (interaktiv)
 # -----------------------------
 st.markdown("<hr style='margin-top:20px; margin-bottom:20px;'>", unsafe_allow_html=True)
 
-# Interaktive Auswahl der Funktion
 selected_function = st.selectbox("Wähle eine Funktion:", list(AGENTEN.keys()))
-
-# Agenten-Text aus marketing_demo.py
 selected_function_text = AGENTEN[selected_function]
 
-# Markdown direkt rendern
 st.markdown(
     f"""
     <div style='padding:15px; background-color:#f2f7ff; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
@@ -58,22 +67,18 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
-# TECHNOLOGIEN Abschnitt
-tech_text = TECHNOLOGIEN.replace("\n", "<br>")
-with st.container():
-    st.markdown(
-        f"""
-        <div style='padding:15px; background-color:#ffffff; border-radius:10px; margin-bottom:15px; min-height:200px;'>
-            <h3 style='color:#004080; font-size:{tech_title_font_size}; margin-bottom:12px; text-align:center;'>Technologien & Infrastruktur</h3>
-        </div>
-        <div style='padding:10px 20px; max-width:900px; margin:auto; font-size:{text_font_size}; line-height:1.6;'>
-            {tech_text}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
+# -----------------------------
+# Technologien Abschnitt
+# -----------------------------
+st.markdown(
+    f"""
+    <div style='padding:15px; background-color:#ffffff; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
+        <h3 style='color:#004080; font-size:22px; margin-bottom:12px; text-align:center;'>Technologien & Infrastruktur</h3>
+        <p style='font-size:18px; line-height:1.6; text-align:left;'>{TECHNOLOGIEN}</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 # Trennlinie
 st.markdown("<hr style='margin-top:20px; margin-bottom:20px;'>", unsafe_allow_html=True)
 
