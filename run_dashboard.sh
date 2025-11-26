@@ -18,4 +18,4 @@ streamlit cache clear
 
 # 3️⃣ Streamlit starten
 echo " Starte Streamlit Dashboard auf http://localhost:8501"
-streamlit run frontend/streamlit_demo.py --server.port 8501
+streamlit run frontend/streamlit_demo3.py --server.port 8501
