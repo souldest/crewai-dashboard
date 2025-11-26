@@ -293,7 +293,7 @@ elif selected_agent == "Proposal":
     """)
 
 # -----------------------------
-# KPIs & Vorteile View
+# KPIs View
 # -----------------------------
 elif selected_agent == "KPIs & Vorteile":
     st.header(f"KPIs & Vorteile – {selected_branch}")
@@ -305,8 +305,10 @@ elif selected_agent == "KPIs & Vorteile":
 
     st.markdown(VORTEILE)
 
+import io  # für In-Memory Excel
+
 # -----------------------------
-# Kontaktformular View
+# Kontaktformular View mit Excel-Download
 # -----------------------------
 elif selected_agent == "Kontaktformular":
     st.header("Kontaktformular / Kundenanfrage")
@@ -314,6 +316,16 @@ elif selected_agent == "Kontaktformular":
     if "kundenanfragen" not in st.session_state:
         st.session_state.kundenanfragen = []
 
+    csv_file = "kundenanfragen.csv"
+
+    # CSV laden, falls vorhanden
+    try:
+        df_csv = pd.read_csv(csv_file)
+        st.session_state.kundenanfragen = df_csv.to_dict(orient="records")
+    except FileNotFoundError:
+        df_csv = pd.DataFrame()
+
+    # Formular
     with st.form("contact_form"):
         name = st.text_input("Name")
         email = st.text_input("E-Mail")
@@ -328,9 +340,14 @@ elif selected_agent == "Kontaktformular":
                 "datum": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             }
             st.session_state.kundenanfragen.append(anfrage)
-            st.success("✅ Ihre Anfrage wurde erfolgreich gesendet.")
 
-            # Neuer Lead aus Anfrage
+            # CSV speichern
+            df_to_save = pd.DataFrame(st.session_state.kundenanfragen)
+            df_to_save.to_csv(csv_file, index=False)
+
+            st.success("✅ Ihre Anfrage wurde erfolgreich gesendet und gespeichert.")
+
+            # Neuer Lead hinzufügen
             new_lead = {
                 "date": datetime.now().strftime("%Y-%m-%d"),
                 "lead_id": f"CUST-{random.randint(1000,9999)}",
@@ -347,14 +364,29 @@ elif selected_agent == "Kontaktformular":
             df_branch = pd.concat([df_branch, pd.DataFrame([new_lead])], ignore_index=True)
             st.session_state.leads_per_branch[selected_branch] = df_branch
 
-            # Aktualisiere lokal für UI
+            # UI aktualisieren
             df_leads = st.session_state.leads_per_branch[selected_branch].copy()
             df_plan = generate_acquisition_plan(df_leads)
             df_prop = generate_proposals(df_plan)
 
+    # Alle Anfragen anzeigen
     st.subheader("Alle Kundenanfragen")
     df_requests = pd.DataFrame(st.session_state.kundenanfragen)
     st.dataframe(df_requests, use_container_width=True)
+
+    # Excel-Download
+    if not df_requests.empty:
+        with io.BytesIO() as buffer:
+            with pd.ExcelWriter(buffer, engine="xlsxwriter") as writer:
+                df_requests.to_excel(writer, index=False, sheet_name="Kundenanfragen")
+                df_plan.to_excel(writer, index=False, sheet_name="Leads_Akquiseplan")
+                writer.save()
+                st.download_button(
+                    label="Kundenanfragen + Leads als Excel herunterladen",
+                    data=buffer.getvalue(),
+                    file_name="kundenanfragen_leads.xlsx",
+                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                )
 
     st.subheader("Automatische Lead-Aktionen (inkl. neuer Kundenanfragen)")
     st.dataframe(df_plan[["company", "score", "Priorität", "Empfohlene_Aktion", "Aktion_Icon"]], use_container_width=True)
