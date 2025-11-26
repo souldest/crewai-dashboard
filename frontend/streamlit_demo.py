@@ -1,14 +1,12 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import random
 from datetime import datetime
-import io
 
 # Marketing Texte & Agenten
 from technologien import TECHNOLOGIEN
 from marketing_demo import HEADER, CREWAI, AGENTEN, VORTEILE, KONTAKT
-from sales_leads import generate_all_leads, generate_branch_leads
+from sales_leads import generate_all_leads
 from akquise_plan import generate_acquisition_plan
 from proposal import generate_proposals
 
@@ -16,12 +14,7 @@ from proposal import generate_proposals
 # Streamlit Seiteneinstellungen
 # -----------------------------
 st.set_page_config(page_title="CrewAI Sales Dashboard", layout="wide")
-
-# Schriftgrößen definieren
-header_font_size = "24px"
-crewai_font_size = "22px"
-tech_title_font_size = "20px"
-text_font_size = "18px"
+st.markdown("<style>body{background-color: #000000;}</style>", unsafe_allow_html=True)
 
 # -----------------------------
 # HEADER Abschnitt
@@ -29,7 +22,7 @@ text_font_size = "18px"
 st.markdown(
     f"""
     <div style='padding:20px; background-color:#0073e6; color:white; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
-        <h1 style='font-size:32px; margin-bottom:12px; text-align:center;'>{HEADER}</h1>
+        <h1 style='font-size:28px; text-align:center; line-height:1.4;'>{HEADER.replace(chr(10), '<br>')}</h1>
     </div>
     """,
     unsafe_allow_html=True
@@ -40,9 +33,9 @@ st.markdown(
 # -----------------------------
 st.markdown(
     f"""
-    <div style='padding:15px; background-color:#004080; color:white; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
-        <h2 style='font-size:26px; margin-bottom:12px; text-align:center;'>CrewAI – Wachstumsbooster</h2>
-        <p style='font-size:18px; line-height:1.6; text-align:left;'>{CREWAI}</p>
+    <div style='padding:20px; background-color:#004080; color:white; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
+        <h2 style='font-size:24px; text-align:center; margin-bottom:12px;'>CrewAI – Wachstumsbooster</h2>
+        <p style='font-size:18px; line-height:1.6;'>{CREWAI.replace(chr(10), '<br>')}</p>
     </div>
     """,
     unsafe_allow_html=True
@@ -51,13 +44,13 @@ st.markdown(
 # -----------------------------
 # Agenten Abschnitt
 # -----------------------------
-selected_function = st.selectbox("Wähle eine Funktion:", list(AGENTEN.keys()))
-selected_function_text = AGENTEN[selected_function]
-
+selected_function = "Analyse & Management"
+agenten_text = AGENTEN[selected_function].replace("\n", "<br>")
 st.markdown(
     f"""
     <div style='padding:15px; background-color:#0059b3; color:white; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
-        {selected_function_text}
+        <h3 style='font-size:22px; text-align:center; margin-bottom:12px;'>Agenten - {selected_function}</h3>
+        <p style='font-size:18px; line-height:1.6;'>{agenten_text}</p>
     </div>
     """,
     unsafe_allow_html=True
@@ -69,22 +62,19 @@ st.markdown(
 st.markdown(
     f"""
     <div style='padding:15px; background-color:#0066cc; color:white; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
-        <h3 style='font-size:22px; margin-bottom:12px; text-align:center;'>Technologien & Infrastruktur</h3>
-        <p style='font-size:18px; line-height:1.6; text-align:left;'>{TECHNOLOGIEN}</p>
+        <h3 style='font-size:22px; text-align:center; margin-bottom:12px;'>Technologien & Infrastruktur</h3>
+        <p style='font-size:18px; line-height:1.6;'>{TECHNOLOGIEN}</p>
     </div>
     """,
     unsafe_allow_html=True
 )
-
-# Trennlinie
-st.markdown("<hr style='margin-top:20px; margin-bottom:20px;'>", unsafe_allow_html=True)
 
 # -----------------------------
 # Sidebar Navigation
 # -----------------------------
 st.sidebar.title("Navigation & Auswahl")
 
-# Zuerst: Branchen
+# Branchen zuerst
 branches = [
     "Modellhäuser", "IT", "Finance", "Banken", "Automobil",
     "Versicherungen", "Marketing", "Werbekampagnen", "Dienstleister",
@@ -93,7 +83,7 @@ branches = [
 ]
 selected_branch = st.sidebar.selectbox("Branche auswählen", branches)
 
-# Dann Navigation
+# Navigation danach
 sections = [
     "Branchenübersicht",
     "Sales Leads",
@@ -105,18 +95,15 @@ sections = [
 selected_section = st.sidebar.radio("Bereich wählen", sections)
 
 # -----------------------------
-# Session-State initialisieren
+# Session State & Leads generieren
 # -----------------------------
 if "leads_per_branch" not in st.session_state:
-    st.session_state.leads_per_branch, st.session_state.branch_profiles = generate_all_leads(branches)
+    st.session_state.leads_per_branch, _ = generate_all_leads(branches)
 
 # Action Icons & Farben
 action_icons = {"Sofort kontaktieren":"🔴", "Anschreiben":"🟠", "Demo vereinbaren":"🟢"}
 priority_colors = {"hoch":"red","mittel":"orange","niedrig":"green"}
 
-# -----------------------------
-# Tabs & Inhalt
-# -----------------------------
 # -----------------------------
 # Sales Leads Tab
 # -----------------------------
@@ -125,11 +112,13 @@ if selected_section == "Sales Leads":
     df_leads = st.session_state.leads_per_branch[selected_branch].copy()
 
     # Filter Priorität
-    st.subheader("Filter Leads")
     selected_priorities = st.multiselect("Priorität auswählen", options=["hoch","mittel","niedrig"], default=["hoch","mittel","niedrig"])
     df_filtered = df_leads[df_leads["Priorität"].isin(selected_priorities)]
 
-    st.dataframe(df_filtered, use_container_width=True)
+    st.dataframe(df_filtered.style.set_properties(**{
+        'background-color': '#1a1a1a',
+        'color': 'white'
+    }), use_container_width=True)
 
     # Histogram Score
     fig = px.histogram(df_filtered, x="score", nbins=20,
@@ -145,19 +134,20 @@ elif selected_section == "Akquiseplan":
     st.header(f"Akquiseplan - {selected_branch}")
     df_plan = generate_acquisition_plan(selected_branch, st.session_state.leads_per_branch, action_icons)
 
-    # Filter nach Aktion
-    st.subheader("Filter nach empfohlener Aktion")
     selected_actions = st.multiselect("Aktion auswählen", options=list(action_icons.keys()), default=list(action_icons.keys()))
     df_filtered_plan = df_plan[df_plan["Empfohlene_Aktion"].isin(selected_actions)]
 
-    st.dataframe(df_filtered_plan[["company","score","Priorität","Empfohlene_Aktion","Aktion_Icon"]], use_container_width=True)
+    st.dataframe(df_filtered_plan.style.set_properties(**{
+        'background-color': '#1a1a1a',
+        'color': 'white'
+    }), use_container_width=True)
 
     # Balkendiagramm Score
     fig_bar = px.bar(df_filtered_plan, x="company", y="score",
                      color="Priorität", color_discrete_map=priority_colors,
                      text="score", title=f"Akquiseplan: Score & Priorität - {selected_branch}",
                      hover_data=["Empfohlene_Aktion"])
-    fig_bar.update_layout(xaxis_title="Unternehmen", yaxis_title="Score", xaxis_tickangle=-45)
+    fig_bar.update_layout(xaxis_tickangle=-45)
     st.plotly_chart(fig_bar, use_container_width=True)
 
     # Kreisdiagramm Aktionen
@@ -173,35 +163,29 @@ elif selected_section == "Proposal":
     st.header(f"Proposal - {selected_branch}")
     df_prop = generate_proposals(selected_branch, st.session_state.leads_per_branch, action_icons)
 
-    # Filter Aktion
-    st.subheader("Filter nach Aktion")
     selected_actions = st.multiselect("Aktion auswählen", options=list(action_icons.keys()), default=list(action_icons.keys()))
     df_filtered = df_prop[df_prop["Proposal_Type"].isin(selected_actions)]
 
-    # Filter Mindestscore
     min_score = st.slider("Minimale durchschnittliche Score", 0, 100, 0)
     df_filtered = df_filtered[df_filtered["Avg_Score"] >= min_score]
 
-    st.dataframe(df_filtered, use_container_width=True)
+    st.dataframe(df_filtered.style.set_properties(**{
+        'background-color': '#1a1a1a',
+        'color': 'white'
+    }), use_container_width=True)
 
     # Balkendiagramm Avg_Score
     fig_bar = px.bar(df_filtered, x="Proposal_Type", y="Avg_Score",
-                     text="Avg_Score", color="Proposal_Type",
+                     color="Proposal_Type", text="Avg_Score",
                      title=f"Durchschnittlicher Score pro Aktion - {selected_branch}",
                      hover_data=["Interpretation","Handlungsempfehlung"])
     fig_bar.update_layout(yaxis_range=[0,100])
     st.plotly_chart(fig_bar, use_container_width=True)
 
-    # Interpretation
+    # Interpretation & Handlungsempfehlungen
     st.subheader("Interpretation & Handlungsempfehlung")
     for _, row in df_filtered.iterrows():
-        st.markdown(f"**{row['Proposal_Type']}**: {row['Interpretation']} – _{row['Handlungsempfehlung']}_")
-
-    # Kreisdiagramm Aktion
-    df_counts = df_filtered.groupby("Proposal_Type")["Count"].sum().reset_index()
-    fig_pie = px.pie(df_counts, names="Proposal_Type", values="Count",
-                     title=f"Anteil der Leads pro Aktion - {selected_branch}", color="Proposal_Type")
-    st.plotly_chart(fig_pie, use_container_width=True)
+        st.markdown(f"- **{row['Proposal_Type']}**: {row['Interpretation']} – _{row['Handlungsempfehlung']}_")
 
 # -----------------------------
 # KPIs & Vorteile
@@ -209,14 +193,18 @@ elif selected_section == "Proposal":
 elif selected_section == "KPIs & Vorteile":
     st.header("KPIs & Vorteile")
     df_leads = st.session_state.leads_per_branch[selected_branch].copy()
-    total_leads = len(df_leads)
-    qualified_leads = df_leads[df_leads["status"]=="qualifiziert"].shape[0]
-    avg_score = round(df_leads["score"].mean(),2) if not df_leads.empty else 0
-    st.metric("Gesamtleads", total_leads)
-    st.metric("Qualifizierte Leads", qualified_leads)
-    st.metric("Durchschnittlicher Score", avg_score)
-    st.subheader("Vorteile von CrewAI")
-    st.markdown(VORTEILE)
+    st.metric("Gesamtleads", len(df_leads))
+    st.metric("Qualifizierte Leads", df_leads[df_leads["status"]=="qualifiziert"].shape[0])
+    st.metric("Durchschnittlicher Score", round(df_leads["score"].mean(),2) if not df_leads.empty else 0)
+
+    st.markdown(
+        f"""
+        <div style='padding:15px; background-color:#004080; color:white; border-radius:10px; margin-top:20px;'>
+            <p style='font-size:18px; line-height:1.6;'>{VORTEILE}</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 # -----------------------------
 # Kontaktformular
@@ -240,17 +228,11 @@ elif selected_section == "Kontaktformular":
         submit = st.form_submit_button("Anfrage senden")
 
         if submit:
-            anfrage = {
-                "name": name,
-                "email": email,
-                "nachricht": nachricht,
-                "datum": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            }
+            anfrage = {"name": name, "email": email, "nachricht": nachricht, "datum": datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
             st.session_state.kundenanfragen.append(anfrage)
             pd.DataFrame(st.session_state.kundenanfragen).to_csv(csv_file, index=False)
             st.success("✅ Anfrage gesendet und gespeichert.")
 
-    st.subheader("Alle Kundenanfragen")
     st.dataframe(pd.DataFrame(st.session_state.kundenanfragen), use_container_width=True)
 
 # -----------------------------
@@ -266,28 +248,4 @@ elif selected_section == "Branchenübersicht":
         avg_score = round(df["score"].mean(),2)
         summary.append({"Branche":branch,"Leads":total,"Qualifizierte":qualified,"Avg_Score":avg_score})
     df_summary = pd.DataFrame(summary)
-
-    st.subheader("Tabellarische Übersicht")
     st.dataframe(df_summary, use_container_width=True)
-
-    fig_bar = px.bar(df_summary, x="Branche", y="Leads",
-                     text="Leads", color="Qualifizierte", color_continuous_scale="Blues",
-                     title="Leads pro Branche (Qualifizierte farblich hervorgehoben)")
-    fig_bar.update_layout(xaxis_tickangle=-45)
-    st.plotly_chart(fig_bar, use_container_width=True)
-
-    df_summary["Nicht_qualifiziert"] = df_summary["Leads"] - df_summary["Qualifizierte"]
-    df_melted = df_summary.melt(id_vars=["Branche"], value_vars=["Qualifizierte","Nicht_qualifiziert"],
-                                var_name="Status", value_name="Anzahl")
-    fig_pie = px.pie(df_melted, names="Status", values="Anzahl",
-                     title="Anteil qualifizierter vs. nicht qualifizierter Leads (gesamt)", color="Status")
-    st.plotly_chart(fig_pie, use_container_width=True)
-
-# -----------------------------
-# Agentenübersicht
-# -----------------------------
-elif selected_section == "Agentenübersicht":
-    st.header("Agenten nach Funktion")
-    st.markdown(f"### {selected_function}")
-    st.markdown(AGENTEN[selected_function])
-    
