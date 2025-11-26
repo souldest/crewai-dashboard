@@ -29,7 +29,6 @@ st.markdown("<hr style='margin-top:20px; margin-bottom:20px;'>", unsafe_allow_ht
 st.sidebar.title("Navigation")
 sections = [
     "Branchenübersicht",        # 1. Branchen
-    "Agentenübersicht",         # 2. Agenten nach Funktion
     "Sales Leads",              # 3. CrewAI Sales Leads
     "Akquiseplan",              # 4. CrewAI Akquiseplan
     "Proposal",                 # 5. CrewAI Proposal
