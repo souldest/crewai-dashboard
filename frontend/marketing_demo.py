@@ -19,7 +19,32 @@ Erleben Sie, wie intelligente Automatisierung Ihren Arbeitsalltag verändert und
 ▶ Jetzt Demo anfragen und das volle Potenzial Ihrer KI-Agenten entdecken
 """
 
-# AGENTEN with consistent sizes & bigger titles
+# --- CREWAI Abschnitt ---
+CREWAI = """
+## CrewAI – Wachstumsbooster durch vernetzte KI-Agenten
+
+Statt isolierter Einzellösungen erhalten Sie mit CrewAI ein orchestriertes Team aus
+spezialisierten KI-Agenten, das gemeinsam arbeitet, kommuniziert und Entscheidungen
+autonom abstimmt.
+
+**Typische Crews:**
+- Sales-Crew: Lead-Agent → Akquise-Agent → Proposal-Agent → CRM-Update
+- Management-Crew: Analyse-Agent → Forecast-Agent → Controlling-Agent
+- Operations-Crew: Data-Agent → Automations-Agent → Monitoring-Agent
+
+**Was macht CrewAI einzigartig?**
+- Gemeinsamer Datenkontext in Echtzeit
+- Autonome Abstimmungen zwischen allen Agenten
+- Vollautomatisierte End-to-End-Prozesse
+
+**Ihre Vorteile:**
+- Massiv schnellere Entscheidungen
+- Höhere Datenkonsistenz & Transparenz
+- Weniger manuelle Arbeit, mehr Fokus
+- Skalierbares Wachstum in Vertrieb, Operations & IT
+"""
+
+# --- AGENTEN nach Funktion ---
 AGENTEN = {
     "Analyse & Management": """
 ## Analyse & Management
