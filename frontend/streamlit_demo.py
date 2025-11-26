@@ -26,11 +26,10 @@ text_font_size = "18px"
 # -----------------------------
 # HEADER Abschnitt
 # -----------------------------
-header_text = HEADER
 st.markdown(
     f"""
-    <div style='padding:20px; background-color:#f0f4f8; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
-        <h1 style='color:#0073e6; font-size:32px; margin-bottom:12px; text-align:center;'>{header_text}</h1>
+    <div style='padding:20px; background-color:#0073e6; color:white; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
+        <h1 style='font-size:32px; margin-bottom:12px; text-align:center;'>{HEADER}</h1>
     </div>
     """,
     unsafe_allow_html=True
@@ -39,28 +38,25 @@ st.markdown(
 # -----------------------------
 # CREWAI Abschnitt
 # -----------------------------
-crewai_text = CREWAI
 st.markdown(
     f"""
-    <div style='padding:15px; background-color:#e6f0ff; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
-        <h2 style='color:#004080; font-size:26px; margin-bottom:12px; text-align:center;'>CrewAI – Wachstumsbooster</h2>
-        <p style='font-size:18px; line-height:1.6; text-align:left;'>{crewai_text}</p>
+    <div style='padding:15px; background-color:#004080; color:white; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
+        <h2 style='font-size:26px; margin-bottom:12px; text-align:center;'>CrewAI – Wachstumsbooster</h2>
+        <p style='font-size:18px; line-height:1.6; text-align:left;'>{CREWAI}</p>
     </div>
     """,
     unsafe_allow_html=True
 )
 
 # -----------------------------
-# Agenten-Text nach Funktion (interaktiv)
+# Agenten Abschnitt
 # -----------------------------
-st.markdown("<hr style='margin-top:20px; margin-bottom:20px;'>", unsafe_allow_html=True)
-
 selected_function = st.selectbox("Wähle eine Funktion:", list(AGENTEN.keys()))
 selected_function_text = AGENTEN[selected_function]
 
 st.markdown(
     f"""
-    <div style='padding:15px; background-color:#f2f7ff; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
+    <div style='padding:15px; background-color:#0059b3; color:white; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
         {selected_function_text}
     </div>
     """,
@@ -72,13 +68,14 @@ st.markdown(
 # -----------------------------
 st.markdown(
     f"""
-    <div style='padding:15px; background-color:#ffffff; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
-        <h3 style='color:#004080; font-size:22px; margin-bottom:12px; text-align:center;'>Technologien & Infrastruktur</h3>
+    <div style='padding:15px; background-color:#0066cc; color:white; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
+        <h3 style='font-size:22px; margin-bottom:12px; text-align:center;'>Technologien & Infrastruktur</h3>
         <p style='font-size:18px; line-height:1.6; text-align:left;'>{TECHNOLOGIEN}</p>
     </div>
     """,
     unsafe_allow_html=True
 )
+
 # Trennlinie
 st.markdown("<hr style='margin-top:20px; margin-bottom:20px;'>", unsafe_allow_html=True)
 
