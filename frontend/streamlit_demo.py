@@ -7,9 +7,9 @@ import io
 
 # Marketing Texte & Agenten
 from marketing_demo import HEADER, CREWAI, AGENTEN, VORTEILE, KONTAKT
-from frontend.sales_leads import generate_all_leads
-from frontend.akquise_plan import generate_acquisition_plan
-from frontend.proposal import generate_proposals
+from sales_leads import generate_all_leads
+from akquise_plan import generate_acquisition_plan
+from proposal import generate_proposals
 
 # -----------------------------
 # Streamlit Seiteneinstellungen
