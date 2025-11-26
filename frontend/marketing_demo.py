@@ -1,23 +1,35 @@
 # marketing_text.py
 
-HEADER = """
-<div style="text-align:center; padding: 30px 0;">
-<h1 style="font-size: 42px; font-weight: 800; margin-bottom: 20px;">
-Revolutionieren Sie Ihr Unternehmen mit KI-Agenten
-</h1>
-
-<p style="font-size: 22px; line-height: 1.5; margin-bottom: 25px;">
-Die Zukunft der Automatisierung beginnt heute.<br>
-Unsere intelligenten, individuell trainierten KI-Agenten übernehmen Analyse, Planung,
-Entscheidungsfindung und operative Aufgaben – vollautomatisch und in Echtzeit.
-So werden Prozesse schneller, kosteneffizienter und skalierbar.
-</p>
-
-<p style="font-size: 24px; font-weight: 700; color:#0073e6; margin-top: 20px;">
-▶ Jetzt Demo anfragen und das Potenzial echter KI erleben.
-</p>
+# -----------------------------
+# UI: Hero Header & Marketing-Text
+# -----------------------------
+st.markdown(f"""
+<div style="text-align:center; padding: 30px; background-color:#f5f7fa; border-radius:10px; margin-bottom:20px;">
+    <h1 style="font-size:48px; font-weight:800; margin-bottom:20px;">
+        Revolutionieren Sie Ihr Unternehmen mit KI-Agenten
+    </h1>
+    <p style="font-size:22px; line-height:1.5; margin-bottom:25px;">
+        Die Zukunft der Automatisierung beginnt heute.<br>
+        Unsere intelligenten, individuell trainierten KI-Agenten übernehmen Analyse, Planung, 
+        Entscheidungsfindung und operative Aufgaben – vollautomatisch und in Echtzeit.
+        So werden Prozesse schneller, kosteneffizienter und skalierbar.
+    </p>
+    <a href="#Kontaktformular" style="
+        display:inline-block; 
+        background-color:#0073e6; 
+        color:white; 
+        font-weight:700; 
+        font-size:20px; 
+        padding:15px 30px; 
+        border-radius:8px; 
+        text-decoration:none;
+        margin-top:10px;">
+        ▶ Jetzt Demo anfragen
+    </a>
 </div>
-"""
+""", unsafe_allow_html=True)
+
+st.markdown("<hr style='margin-top:20px; margin-bottom:20px;'>", unsafe_allow_html=True)
 
 # --- CREWAI Abschnitt ---
 CREWAI = """

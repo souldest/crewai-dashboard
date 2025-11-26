@@ -1,16 +1,15 @@
-# streamlit_demo.py
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 import random
 from datetime import datetime
 import numpy as np
-
-# Importiere die Texte (HEADER, CREWAI, AGENTEN, VORTEILE, KONTAKT)
-# (Deine Datei heißt in deinem Setup vermutlich marketing_demo.py)
+import io  # Für Excel-Download
 from marketing_demo import HEADER, CREWAI, AGENTEN, VORTEILE, KONTAKT
 
-# Seite konfigurieren (muss ganz oben erfolgen)
+# -----------------------------
+# Page config
+# -----------------------------
 st.set_page_config(page_title="CrewAI Sales Dashboard", layout="wide")
 
 # -----------------------------
@@ -19,22 +18,34 @@ st.set_page_config(page_title="CrewAI Sales Dashboard", layout="wide")
 st.markdown(HEADER, unsafe_allow_html=True)
 st.markdown("<hr style='margin-top:20px; margin-bottom:20px;'>", unsafe_allow_html=True)
 
+# -----------------------------
+# CREWAI Abschnitt
+# -----------------------------
 st.subheader("CrewAI – Intelligente Agenten-Teams")
 st.markdown(CREWAI)
 
+# -----------------------------
+# AGENTEN SECTION MIT EXPANDERN
+# -----------------------------
 st.subheader("KI-Agenten nach Funktion")
 for kategorie, text in AGENTEN.items():
     with st.expander(kategorie, expanded=False):
         st.markdown(text)
 
+# -----------------------------
+# VORTEILE
+# -----------------------------
 st.subheader("Ihre Vorteile")
 st.markdown(VORTEILE)
 
+# -----------------------------
+# KONTAKT
+# -----------------------------
 st.subheader("Kontakt & Demo")
 st.markdown(KONTAKT)
 
 # -----------------------------
-# Konfiguration: Branchen & Auswahl
+# Sidebar: Branchen & Ansicht
 # -----------------------------
 branches = [
     "Modellhäuser", "IT", "Finance", "Banken", "Automobil",
@@ -59,7 +70,7 @@ action_icons = {
 }
 
 # -----------------------------
-# Daten-Generator: Unternehmen & Branch-Profiles
+# Branchendaten generieren
 # -----------------------------
 def generate_companies(branches, n_per_branch=45):
     companies = []
@@ -75,18 +86,17 @@ branch_profiles = {
 }
 
 # -----------------------------
-# Session-State: Leads initialisieren
+# Session-State für Leads
 # -----------------------------
 if "leads_per_branch" not in st.session_state:
     def generate_branch_leads(branch, n_companies_per_branch=45, n_qualifiziert=None):
         if n_qualifiziert is None:
-            n_qualifiziert = random.randint(8, 28)
+            n_qualifiziert = random.randint(10, 30)
 
         profile = branch_profiles[branch]
         companies = [c for c in all_companies if c.startswith(branch)]
         companies = companies[:n_companies_per_branch]
 
-        # Scores erzeugen und einschränken auf [0,100]
         all_scores = [max(0, min(100, random.gauss(profile["score_mean"], profile["score_sd"]))) for _ in companies]
         sorted_idx = sorted(range(len(all_scores)), key=lambda i: all_scores[i], reverse=True)
 
@@ -102,7 +112,6 @@ if "leads_per_branch" not in st.session_state:
                 "industry": branch,
                 "score": round(score, 2),
                 "status": status,
-                # nur einmalig setzen
                 "product_interest": random.choice(["Produkt A", "Produkt B", "Produkt C"]),
                 "Priorität": "hoch" if score > 70 else ("mittel" if score > 40 else "niedrig")
             }
@@ -111,17 +120,20 @@ if "leads_per_branch" not in st.session_state:
         df = pd.DataFrame(data).sort_values(by="score", ascending=False).reset_index(drop=True)
         return df
 
-    st.session_state.leads_per_branch = {branch: generate_branch_leads(branch) for branch in branches}
+    st.session_state.leads_per_branch = {
+        branch: generate_branch_leads(branch) for branch in branches
+    }
+
+# Aktuelle Leads
+df_leads = st.session_state.leads_per_branch[selected_branch].copy()
 
 # -----------------------------
-# Helper-Funktionen: Akquiseplan & Proposals
+# Akquiseplan
 # -----------------------------
 def generate_acquisition_plan(df, top_n=30):
-    # Wähle qualifizierte oder neue Leads (neu ist möglich wenn man hinzufügen will)
     df_qualified = df[df["status"].isin(["qualifiziert", "neu"])].copy().sort_values(by="score", ascending=False)
     df_qualified = df_qualified.head(top_n).reset_index(drop=True)
 
-    # Empfohlene Aktion je Rang
     actions = []
     for i in range(len(df_qualified)):
         if i < 5:
@@ -135,6 +147,11 @@ def generate_acquisition_plan(df, top_n=30):
     df_qualified["Aktion_Icon"] = df_qualified["Empfohlene_Aktion"].map(action_icons)
     return df_qualified
 
+df_plan = generate_acquisition_plan(df_leads)
+
+# -----------------------------
+# Proposal Generator
+# -----------------------------
 def generate_proposals(df_plan):
     if df_plan.empty:
         return pd.DataFrame(columns=["Proposal_Type", "Avg_Score", "Count", "Interpretation", "Handlungsempfehlung"])
@@ -168,7 +185,7 @@ def generate_proposals(df_plan):
     agg["Interpretation"] = agg["Avg_Score"].apply(interpret)
     agg["Handlungsempfehlung"] = agg["Avg_Score"].apply(recommendation)
 
-    # Sicherstellen, dass alle Aktionen vorhanden sind
+    # Alle drei Aktionen sicherstellen
     for act in relevant_actions:
         if act not in agg["Proposal_Type"].values:
             agg = pd.concat([agg, pd.DataFrame([{
@@ -179,22 +196,15 @@ def generate_proposals(df_plan):
                 "Handlungsempfehlung": "Keine Aktion"
             }])], ignore_index=True)
 
-    # Reihenfolge fixieren
-    order_map = {a: i for i, a in enumerate(relevant_actions)}
-    agg["Order"] = agg["Proposal_Type"].map(order_map)
+    agg["Order"] = agg["Proposal_Type"].map({a: i for i, a in enumerate(relevant_actions)})
     agg = agg.sort_values("Order").drop(columns=["Order"]).reset_index(drop=True)
 
     return agg
 
-# -----------------------------
-# Aktuelle Daten für die ausgewählte Branche
-# -----------------------------
-df_leads = st.session_state.leads_per_branch[selected_branch].copy()
-df_plan = generate_acquisition_plan(df_leads)
 df_prop = generate_proposals(df_plan)
 
 # -----------------------------
-# KPI-Berechnungen
+# KPIs
 # -----------------------------
 total_leads = len(df_leads)
 qualified_leads = df_leads[df_leads["status"].isin(["qualifiziert", "neu"])].shape[0]
@@ -202,12 +212,12 @@ avg_score = df_leads["score"].mean() if not df_leads.empty else 0
 max_rate = df_prop["Avg_Score"].max() if not df_prop.empty else 0
 
 # -----------------------------
-# Dashboard Titel
+# Dashboard-Titel
 # -----------------------------
 st.title("CrewAI Sales Dashboard")
 
 # -----------------------------
-# Sales Leads View
+# Tabs
 # -----------------------------
 if selected_agent == "Sales Leads":
     st.header(f"Sales Leads – {selected_branch}")
@@ -216,27 +226,23 @@ if selected_agent == "Sales Leads":
     col2.metric("Qualifizierte Leads", qualified_leads)
     col3.metric("Durchschnittlicher Lead Score", f"{avg_score:.2f}")
 
-    st.subheader("Top qualifizierte Leads (Akquiseplan)")
-    display_cols = ["company", "score", "Priorität", "city", "product_interest", "Empfohlene_Aktion", "Aktion_Icon"]
-    st.dataframe(df_plan[display_cols], use_container_width=True)
+    st.subheader("Top qualifizierte Leads")
+    st.dataframe(df_plan[["company", "score", "Priorität", "city", "product_interest", "Empfohlene_Aktion", "Aktion_Icon"]], use_container_width=True)
 
-    # Histogram Score-Verteilung (Status als Farbe)
     fig_score = px.histogram(
         df_leads,
         x="score",
         nbins=10,
         hover_data=["company", "city", "industry"],
         color="status",
+        color_discrete_map={"qualifiziert": "green", "inqualifiziert": "red", "neu": "blue"},
         title="Lead Score Verteilung"
     )
     st.plotly_chart(fig_score, use_container_width=True)
 
-# -----------------------------
-# Akquiseplan View
-# -----------------------------
 elif selected_agent == "Akquiseplan":
     st.header(f"Akquiseplan – {selected_branch}")
-    st.subheader("Strategieplan für Top qualifizierte Leads")
+    st.subheader("Strategieplan für Top 30 qualifizierte Leads")
     st.dataframe(df_plan[["company", "score", "Priorität", "Empfohlene_Aktion", "Aktion_Icon"]], use_container_width=True)
 
     counts = df_plan["Empfohlene_Aktion"].value_counts().reset_index()
@@ -246,13 +252,12 @@ elif selected_agent == "Akquiseplan":
         x="Aktion",
         y="Anzahl",
         text_auto=True,
-        title="Häufigkeit der Akquise-Aktionen"
+        title="Häufigkeit der Akquise-Aktionen",
+        color="Anzahl",
+        color_continuous_scale=px.colors.sequential.Plasma
     )
     st.plotly_chart(fig_actions, use_container_width=True)
 
-# -----------------------------
-# Proposal View
-# -----------------------------
 elif selected_agent == "Proposal":
     st.header(f"Proposal Generator – {selected_branch}")
     st.dataframe(df_prop, use_container_width=True)
@@ -267,50 +272,41 @@ elif selected_agent == "Proposal":
         x="Proposal_Type",
         y="Avg_Score",
         text_auto=True,
-        title="Durchschnittlicher Lead-Score je Aktion"
+        title="Durchschnittlicher Lead-Score je Aktion",
+        color="Avg_Score",
+        color_continuous_scale=px.colors.sequential.Cividis
     )
     st.plotly_chart(fig_prop, use_container_width=True)
 
-    # Heatmap: Score-Verteilung je Aktion (wenn Daten vorhanden)
+    # Heatmap
     if not df_plan.empty:
-        # Pivot: Unternehmen x Aktion mit Score
         df_heat = df_plan.pivot_table(index="company", columns="Empfohlene_Aktion", values="score", fill_value=0)
-        # px.imshow erwartet matrix; transponieren, damit Aktionen in y-Achse sind
         fig_heat = px.imshow(
             df_heat.T,
             labels=dict(x="Unternehmen", y="Aktion", color="Score"),
             x=df_heat.index,
             y=df_heat.columns,
+            color_continuous_scale='Viridis',
             title="Heatmap: Lead-Scores pro Aktion"
         )
         st.plotly_chart(fig_heat, use_container_width=True)
 
     st.markdown("""
     **Interpretation & Handlungsempfehlung:**
-    - 🔴 Sofort kontaktieren: höchste Scores → sofort bearbeiten.
+    - 🔴 Sofort kontaktieren: höchste Scores, höchste Abschlusswahrscheinlichkeit → sofort bearbeiten.
     - 🟠 Anschreiben: mittlere Scores → gezielt bearbeiten, Follow-up.
     - 🟢 Demo vereinbaren: niedrigere Scores → Demo anbieten und beobachten.
     """)
 
-# -----------------------------
-# KPIs View
-# -----------------------------
 elif selected_agent == "KPIs & Vorteile":
     st.header(f"KPIs & Vorteile – {selected_branch}")
-    k1, k2, k3, k4 = st.columns(4)
-    k1.metric("Gesamtanzahl Leads", total_leads)
-    k2.metric("Qualifizierte Leads", qualified_leads)
-    k3.metric("Durchschnittlicher Lead Score", f"{avg_score:.2f}")
-    k4.metric("Max. Proposal Avg Score", f"{max_rate:.2f}")
+    st.metric("Gesamtanzahl Leads", total_leads)
+    st.metric("Qualifizierte Leads", qualified_leads)
+    st.metric("Durchschnittlicher Lead Score", f"{avg_score:.2f}")
+    st.metric("Max. Proposal Avg Score", f"{max_rate:.2f}")
 
-    st.markdown(VORTEILE)
-
-import io  # für In-Memory Excel
-
-# -----------------------------
-# Kontaktformular View mit Excel-Download
-# -----------------------------
 elif selected_agent == "Kontaktformular":
+    # -------- Kontaktformular inkl. Excel Download --------
     st.header("Kontaktformular / Kundenanfrage")
 
     if "kundenanfragen" not in st.session_state:
@@ -318,14 +314,13 @@ elif selected_agent == "Kontaktformular":
 
     csv_file = "kundenanfragen.csv"
 
-    # CSV laden, falls vorhanden
+    # CSV laden
     try:
         df_csv = pd.read_csv(csv_file)
         st.session_state.kundenanfragen = df_csv.to_dict(orient="records")
     except FileNotFoundError:
         df_csv = pd.DataFrame()
 
-    # Formular
     with st.form("contact_form"):
         name = st.text_input("Name")
         email = st.text_input("E-Mail")
@@ -347,7 +342,7 @@ elif selected_agent == "Kontaktformular":
 
             st.success("✅ Ihre Anfrage wurde erfolgreich gesendet und gespeichert.")
 
-            # Neuer Lead hinzufügen
+            # Neuer Lead
             new_lead = {
                 "date": datetime.now().strftime("%Y-%m-%d"),
                 "lead_id": f"CUST-{random.randint(1000,9999)}",
@@ -381,34 +376,29 @@ elif selected_agent == "Kontaktformular":
                 df_requests.to_excel(writer, index=False, sheet_name="Kundenanfragen")
                 df_plan.to_excel(writer, index=False, sheet_name="Leads_Akquiseplan")
                 writer.save()
-                st.download_button(
-                    label="Kundenanfragen + Leads als Excel herunterladen",
-                    data=buffer.getvalue(),
-                    file_name="kundenanfragen_leads.xlsx",
-                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                )
+            st.download_button(
+                label="Kundenanfragen + Leads als Excel herunterladen",
+                data=buffer.getvalue(),
+                file_name="kundenanfragen_leads.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            )
 
     st.subheader("Automatische Lead-Aktionen (inkl. neuer Kundenanfragen)")
     st.dataframe(df_plan[["company", "score", "Priorität", "Empfohlene_Aktion", "Aktion_Icon"]], use_container_width=True)
     st.markdown("**Legende:** 🔴 Sofort kontaktieren 🟠 Anschreiben 🟢 Demo vereinbaren")
 
-# -----------------------------
-# Branchenübersicht View
-# -----------------------------
 elif selected_agent == "Branchenübersicht":
-    st.header("Branchenüberblick – Alle Unternehmen")
+    st.header("Branchenüberblick – Alle 900 Unternehmen")
     df_all_leads = pd.concat(st.session_state.leads_per_branch.values(), ignore_index=True)
-
     df_kpis = df_all_leads.groupby("industry").agg(
         total_leads=("lead_id", "count"),
         qualified_leads=("status", lambda x: x.isin(["qualifiziert", "neu"]).sum()),
         avg_score=("score", "mean"),
         max_score=("score", "max")
     ).reset_index()
-
     df_kpis["avg_score"] = df_kpis["avg_score"].round(2)
 
-    # Empfehlung nach avg_score
+    # Empfehlung nach Score
     df_kpis = df_kpis.sort_values("avg_score", ascending=False).reset_index(drop=True)
     df_kpis["Empfehlung"] = ""
     for i in range(len(df_kpis)):
