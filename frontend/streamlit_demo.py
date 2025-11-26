@@ -41,17 +41,28 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# TECHNOLOGIEN Abschnitt
+# -----------------------------
+# TECHNOLOGIEN Abschnitt stabil sichtbar
+# -----------------------------
 tech_text = TECHNOLOGIEN.replace("\n", "<br>")  # Zeilenumbrüche in <br> umwandeln
-st.markdown(
-    f"""
-    <div style='text-align:left; padding:20px; background-color:#ffffff; border-radius:10px; margin-bottom:15px;'>
-        <h3 style='color:#004080; font-size:26px; margin-bottom:12px; text-align:center;'>Technologien & Infrastruktur</h3>
-        <p style='font-size:16px; line-height:1.6; max-width:900px; margin:auto;'>{tech_text}</p>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+
+with st.container():  # Container sorgt für zuverlässige Darstellung
+    st.markdown(
+        """
+        <div style='padding:20px; background-color:#ffffff; border-radius:10px; margin-bottom:15px; min-height:200px;'>
+            <h3 style='color:#004080; font-size:26px; margin-bottom:12px; text-align:center;'>Technologien & Infrastruktur</h3>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    st.markdown(
+        f"""
+        <div style='padding:10px 20px; max-width:900px; margin:auto; font-size:16px; line-height:1.6;'>
+            {tech_text}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 # Trennlinie
 st.markdown("<hr style='margin-top:20px; margin-bottom:20px;'>", unsafe_allow_html=True)
