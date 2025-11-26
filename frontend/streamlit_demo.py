@@ -6,7 +6,7 @@ from datetime import datetime
 import io
 
 # Marketing Texte & Agenten
-from marketing_demo import HEADER, CREWAI, AGENTEN, VORTEILE, KONTAKT, WEITERE_AGENTEN
+from marketing_demo import HEADER, CREWAI, AGENTEN, VORTEILE, KONTAKT
 from frontend.sales_leads import generate_all_leads
 from frontend.akquise_plan import generate_acquisition_plan
 from frontend.proposal import generate_proposals
@@ -246,5 +246,4 @@ elif selected_section == "Agentenübersicht":
     st.header("Agenten nach Funktion")
     st.markdown(f"### {selected_function}")
     st.markdown(AGENTEN[selected_function])
-    st.markdown("### Vorschläge für weitere Agenten")
-    st.markdown(WEITERE_AGENTEN)
+    
