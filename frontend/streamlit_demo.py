@@ -17,22 +17,13 @@ from proposal import generate_proposals
 # -----------------------------
 st.set_page_config(page_title="CrewAI Sales Dashboard", layout="wide")
 
-# -----------------------------
-# Oberer Dashboard-Bereich: HEADER, CREWAI, TECHNOLOGIEN
-# Einheitliche Schriftgrößen für harmonisches Layout
-# -----------------------------
-
-# Schriftgrößen
-section_title_font_size = "28px"  # alle Titel ähnlich groß
-text_font_size = "18px"           # Fließtext
-
 # HEADER
 header_text = HEADER.replace("\n", "<br>")
 with st.container():
     st.markdown(
         f"""
         <div style='padding:20px; background-color:#f0f8ff; border-radius:10px; margin-bottom:10px;'>
-            <h1 style='color:#0073e6; font-size:{section_title_font_size}; margin-bottom:12px; text-align:center;'>{header_text}</h1>
+            <h1 style='color:#0073e6; font-size:{header_font_size}; margin-bottom:12px; text-align:center;'>{header_text}</h1>
         </div>
         """,
         unsafe_allow_html=True
@@ -44,7 +35,24 @@ with st.container():
     st.markdown(
         f"""
         <div style='padding:15px; background-color:#e6f2ff; border-radius:10px; margin-bottom:10px;'>
-            <h2 style='color:#0073e6; font-size:{section_title_font_size}; margin-bottom:12px; text-align:center;'>{crewai_text}</h2>
+            <h2 style='color:#0073e6; font-size:{crewai_font_size}; margin-bottom:12px; text-align:center;'>{crewai_text}</h2>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+# -----------------------------
+# Agenten-Text nach Funktion 
+# -----------------------------
+selected_function = "Vertrieb & Marketing"  # Standardwert oder kann über st.selectbox gesetzt werden
+
+selected_function_text = AGENTEN[selected_function].replace("\n", "<br>")
+with st.container():
+    st.markdown(
+        f"""
+        <div style='padding:15px; background-color:#f2f7ff; border-radius:10px; margin-bottom:10px; max-width:900px; margin:auto;'>
+            <h3 style='color:#004080; font-size:22px; margin-bottom:12px; text-align:center;'>Agenten - {selected_function}</h3>
+            <p style='font-size:18px; line-height:1.6; text-align:left;'>{selected_function_text}</p>
         </div>
         """,
         unsafe_allow_html=True
@@ -56,7 +64,7 @@ with st.container():
     st.markdown(
         f"""
         <div style='padding:15px; background-color:#ffffff; border-radius:10px; margin-bottom:15px; min-height:200px;'>
-            <h3 style='color:#004080; font-size:{section_title_font_size}; margin-bottom:12px; text-align:center;'>Technologien & Infrastruktur</h3>
+            <h3 style='color:#004080; font-size:{tech_title_font_size}; margin-bottom:12px; text-align:center;'>Technologien & Infrastruktur</h3>
         </div>
         <div style='padding:10px 20px; max-width:900px; margin:auto; font-size:{text_font_size}; line-height:1.6;'>
             {tech_text}
@@ -71,20 +79,9 @@ st.markdown("<hr style='margin-top:20px; margin-bottom:20px;'>", unsafe_allow_ht
 # -----------------------------
 # Sidebar Navigation
 # -----------------------------
-st.sidebar.title("Navigation")
-sections = [
-    "Branchenübersicht",        # 1. Branchen
-    "Sales Leads",              # 3. CrewAI Sales Leads
-    "Akquiseplan",              # 4. CrewAI Akquiseplan
-    "Proposal",                 # 5. CrewAI Proposal
-    "KPIs & Vorteile",          # 6. KPIs & Vorteile
-    "Kontaktformular"           # 7. Kontaktformular
-]
-selected_section = st.sidebar.radio("Bereich wählen", sections)
+st.sidebar.title("Navigation & Auswahl")
 
-# -----------------------------
-# Sidebar: Branche auswählen
-# -----------------------------
+# Zuerst: Branchen
 branches = [
     "Modellhäuser", "IT", "Finance", "Banken", "Automobil",
     "Versicherungen", "Marketing", "Werbekampagnen", "Dienstleister",
@@ -93,16 +90,16 @@ branches = [
 ]
 selected_branch = st.sidebar.selectbox("Branche auswählen", branches)
 
-# -----------------------------
-# Sidebar: Agenten nach Funktion
-# -----------------------------
-st.sidebar.markdown("### Agenten nach Funktion")
-function_keys = list(AGENTEN.keys())
-selected_function = st.sidebar.selectbox("Funktion wählen", function_keys)
-
-st.sidebar.markdown("**Agenten in dieser Funktion:**")
-for line in AGENTEN[selected_function].strip().split("\n"):
-    st.sidebar.markdown(f"- {line}")
+# Dann Navigation
+sections = [
+    "Branchenübersicht",
+    "Sales Leads",
+    "Akquiseplan",
+    "Proposal",
+    "KPIs & Vorteile",
+    "Kontaktformular"
+]
+selected_section = st.sidebar.radio("Bereich wählen", sections)
 
 # -----------------------------
 # Session-State initialisieren

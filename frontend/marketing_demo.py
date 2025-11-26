@@ -2,7 +2,7 @@
 
 # HEADER with larger title using Markdown
 HEADER = """
-# Revolutionieren Sie Ihr Unternehmen mit KI-Agenten
+  Revolutionieren Sie Ihr Unternehmen mit KI-Agenten
 
 Die Zukunft der Automatisierung beginnt heute.
 Unser intelligentes System liefert leistungsstarke KI-Agenten, die Ihre Geschäftsprozesse effizienter gestalten,
@@ -21,7 +21,7 @@ Erleben Sie, wie intelligente Automatisierung Ihren Arbeitsalltag verändert und
 
 # --- CREWAI Abschnitt ---
 CREWAI = """
-## CrewAI – Wachstumsbooster durch vernetzte KI-Agenten
+   CrewAI – Wachstumsbooster durch vernetzte KI-Agenten
 
 Statt isolierter Einzellösungen erhalten Sie mit CrewAI ein orchestriertes Team aus
 spezialisierten KI-Agenten, das gemeinsam arbeitet, kommuniziert und Entscheidungen
@@ -124,7 +124,7 @@ AGENTEN = {
 
 # VORTEILE with bigger title
 VORTEILE = """
-## Ihre Vorteile auf einen Blick
+   Ihre Vorteile auf einen Blick
 - Automatisierung repetitiver Prozesse – ohne manuelle Eingriffe
 - Datenbasierte Entscheidungen in Sekunden statt Stunden
 - KI-Agenten, die 24/7 arbeiten und niemals langsamer werden
@@ -136,7 +136,7 @@ VORTEILE = """
 
 # KONTAKT with bigger title
 KONTAKT = """
-## Kontakt & Demo
+   Kontakt & Demo
 
 AI Solutions – KI-Agenten • Automatisierung • Data Science
 Vereinbaren Sie Ihre persönliche Demo über unser Kontaktformular.
