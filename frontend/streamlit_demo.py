@@ -18,10 +18,41 @@ from proposal import generate_proposals
 st.set_page_config(page_title="CrewAI Sales Dashboard", layout="wide")
 
 # -----------------------------
-# Marketing Header
+# Oberer Dashboard-Bereich: HEADER, CREWAI, TECHNOLOGIEN
 # -----------------------------
-st.markdown(f"<h1 style='text-align:center; color:#0073e6'>{HEADER}</h1>", unsafe_allow_html=True)
-st.markdown(f"<h3 style='text-align:center;'>{CREWAI}</h3>", unsafe_allow_html=True)
+
+# HEADER
+st.markdown(
+    f"""
+    <div style='text-align:center; padding:20px; background-color:#f0f8ff; border-radius:10px;'>
+        <h1 style='color:#0073e6; font-size:42px; margin-bottom:15px;'>{HEADER}</h1>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# CREWAI Abschnitt
+st.markdown(
+    f"""
+    <div style='text-align:center; padding:15px; background-color:#e6f2ff; border-radius:10px; margin-top:10px;'>
+        <h2 style='color:#0073e6; font-size:32px; margin-bottom:10px;'>{CREWAI}</h2>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# TECHNOLOGIEN Abschnitt
+st.markdown(
+    f"""
+    <div style='text-align:center; padding:15px; background-color:#ffffff; border-radius:10px; margin-top:10px;'>
+        <h3 style='color:#004080; font-size:28px; margin-bottom:10px;'>Technologien & Infrastruktur</h3>
+        <p style='font-size:16px; line-height:1.6; text-align:left; max-width:900px; margin:auto;'>{TECHNOLOGIEN}</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# Trennlinie
 st.markdown("<hr style='margin-top:20px; margin-bottom:20px;'>", unsafe_allow_html=True)
 
 # -----------------------------
