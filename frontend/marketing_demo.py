@@ -21,29 +21,36 @@ Erleben Sie, wie intelligente Automatisierung Ihren Arbeitsalltag verändert und
 </div>
 """
 
-# --- CREWAI Abschnitt ---
 CREWAI = """
-CrewAI – Wachstumsbooster durch vernetzte KI-Agenten
+<div style='font-size:20px; line-height:1.4;'>
+<b>CrewAI – Wachstumsbooster durch vernetzte KI-Agenten</b><br><br>
 
 Statt isolierter Einzellösungen erhalten Sie mit CrewAI ein orchestriertes Team aus
 spezialisierten KI-Agenten, das gemeinsam arbeitet, kommuniziert und Entscheidungen
-autonom abstimmt.
+autonom abstimmt.<br><br>
 
-Typische Crews:
-- Sales-Crew: Lead-Agent → Akquise-Agent → Proposal-Agent → CRM-Update
-- Management-Crew: Analyse-Agent → Forecast-Agent → Controlling-Agent
-- Operations-Crew: Data-Agent → Automations-Agent → Monitoring-Agent
+<b>Typische Crews:</b>
+<ul>
+<li><b>Sales-Crew:</b> Lead-Agent → Akquise-Agent → Proposal-Agent → CRM-Update</li>
+<li><b>Management-Crew:</b> Analyse-Agent → Forecast-Agent → Controlling-Agent</li>
+<li><b>Operations-Crew:</b> Data-Agent → Automations-Agent → Monitoring-Agent</li>
+</ul>
 
-Was macht CrewAI einzigartig?
-- Gemeinsamer Datenkontext in Echtzeit  
-- Autonome Abstimmungen zwischen allen Agenten  
-- Vollautomatisierte End-to-End-Prozesse  
+<b>Was macht CrewAI einzigartig?</b>
+<ul>
+<li>Gemeinsamer Datenkontext in Echtzeit</li>
+<li>Autonome Abstimmungen zwischen allen Agenten</li>
+<li>Vollautomatisierte End-to-End-Prozesse</li>
+</ul>
 
-Ihre Vorteile:
-- Massiv schnellere Entscheidungen  
-- Höhere Datenkonsistenz & Transparenz  
-- Weniger manuelle Arbeit, mehr Fokus  
-- Skalierbares Wachstum in Vertrieb, Operations & IT  
+<b>Ihre Vorteile:</b>
+<ul>
+<li>Massiv schnellere Entscheidungen</li>
+<li>Höhere Datenkonsistenz & Transparenz</li>
+<li>Weniger manuelle Arbeit, mehr Fokus</li>
+<li>Skalierbares Wachstum in Vertrieb, Operations & IT</li>
+</ul>
+</div>
 """
 
 # --- AGENTEN nach Funktion ---
