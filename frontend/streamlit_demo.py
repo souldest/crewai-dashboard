@@ -14,15 +14,27 @@ from proposal import generate_proposals
 # Streamlit Seiteneinstellungen
 # -----------------------------
 st.set_page_config(page_title="CrewAI Sales Dashboard", layout="wide")
-st.markdown("<style>body{background-color: black;}</style>", unsafe_allow_html=True)
+
+# -----------------------------
+# Hintergrundfarbe schwarz
+# -----------------------------
+st.markdown(
+    """
+    <style>
+    .stApp {background-color: #000000;}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # -----------------------------
 # HEADER Abschnitt
 # -----------------------------
 st.markdown(
     f"""
-    <div style='padding:20px; background-color:#0073e6; color:white; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
-        <h1 style='font-size:30px; text-align:center; margin-bottom:12px;'>{HEADER}</h1>
+    <div style='padding:20px; background-color:#0073e6; color:white; border-radius:15px; margin-bottom:20px; max-width:900px; margin:auto;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);'>
+        <h1 style='font-size:28px; text-align:center; line-height:1.4;'>{HEADER}</h1>
     </div>
     """,
     unsafe_allow_html=True
@@ -33,8 +45,9 @@ st.markdown(
 # -----------------------------
 st.markdown(
     f"""
-    <div style='padding:15px; background-color:#004080; color:white; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
-        <h2 style='font-size:26px; margin-bottom:12px; text-align:center;'>CrewAI – Wachstumsbooster</h2>
+    <div style='padding:20px; background-color:#4da6ff; color:white; border-radius:15px; margin-bottom:20px; max-width:900px; margin:auto;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);'>
+        <h2 style='font-size:24px; margin-bottom:12px; text-align:center;'>CrewAI – Wachstumsbooster</h2>
         <p style='font-size:18px; line-height:1.6;'>{CREWAI}</p>
     </div>
     """,
@@ -42,28 +55,16 @@ st.markdown(
 )
 
 # -----------------------------
-# Technologien Abschnitt
-# -----------------------------
-st.markdown(
-    f"""
-    <div style='padding:15px; background-color:#0059b3; color:white; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
-        <h3 style='font-size:24px; margin-bottom:12px; text-align:center;'>Technologien & Infrastruktur</h3>
-        <p style='font-size:18px; line-height:1.6;'>{TECHNOLOGIEN}</p>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-# -----------------------------
-# Alle Agenten nach Funktion in Karten
+# Agenten nach Funktion direkt unter CREWAI
 # -----------------------------
 st.markdown("<h2 style='text-align:center; color:white; margin-top:20px;'>Alle Agenten nach Funktion</h2>", unsafe_allow_html=True)
 for func_name, func_text in AGENTEN.items():
     func_text_html = func_text.replace("\n", "<br>")
     st.markdown(
         f"""
-        <div style='padding:15px; background-color:#0059b3; color:white; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
-            <h3 style='font-size:24px; text-align:center; margin-bottom:12px;'>{func_name}</h3>
+        <div style='padding:15px; background-color:#4da6ff; color:white; border-radius:15px; margin-bottom:20px; max-width:900px; margin:auto;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.2);'>
+            <h3 style='font-size:22px; text-align:center; margin-bottom:12px;'>{func_name}</h3>
             <p style='font-size:18px; line-height:1.6;'>{func_text_html}</p>
         </div>
         """,
@@ -71,9 +72,23 @@ for func_name, func_text in AGENTEN.items():
     )
 
 # -----------------------------
-# Sidebar Navigation
+# Technologien Abschnitt
 # -----------------------------
-st.sidebar.title("Branche auswählen & Navigation")
+st.markdown(
+    f"""
+    <div style='padding:15px; background-color:#4da6ff; color:white; border-radius:15px; margin-bottom:20px; max-width:900px; margin:auto;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);'>
+        <h3 style='font-size:22px; margin-bottom:12px; text-align:center;'>Technologien & Infrastruktur</h3>
+        <p style='font-size:18px; line-height:1.6;'>{TECHNOLOGIEN}</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# -----------------------------
+# Sidebar Navigation & Branchen
+# -----------------------------
+st.sidebar.title("Navigation & Auswahl")
 
 branches = [
     "Modellhäuser", "IT", "Finance", "Banken", "Automobil",
@@ -94,27 +109,24 @@ sections = [
 selected_section = st.sidebar.radio("Bereich wählen", sections)
 
 # -----------------------------
-# Session-State initialisieren
+# Session State initialisieren
 # -----------------------------
 if "leads_per_branch" not in st.session_state:
-    st.session_state.leads_per_branch, _ = generate_all_leads(branches)
+    st.session_state.leads_per_branch, st.session_state.branch_profiles = generate_all_leads(branches)
 
-# Action Icons & Farben
 action_icons = {"Sofort kontaktieren":"🔴", "Anschreiben":"🟠", "Demo vereinbaren":"🟢"}
 priority_colors = {"hoch":"red","mittel":"orange","niedrig":"green"}
 
 # -----------------------------
-# Sections
+# Sales Leads Tab
 # -----------------------------
-# Sales Leads
 if selected_section == "Sales Leads":
     st.header(f"Sales Leads - {selected_branch}")
     df_leads = st.session_state.leads_per_branch[selected_branch].copy()
 
     st.subheader("Filter Leads")
-    selected_priorities = st.multiselect("Priorität auswählen", options=["hoch","mittel","niedrig"], default=["hoch","mittel","niedrig"])
+    selected_priorities = st.multiselect("Priorität auswählen", ["hoch","mittel","niedrig"], default=["hoch","mittel","niedrig"])
     df_filtered = df_leads[df_leads["Priorität"].isin(selected_priorities)]
-
     st.dataframe(df_filtered, use_container_width=True)
 
     fig = px.histogram(df_filtered, x="score", nbins=20,
@@ -123,7 +135,9 @@ if selected_section == "Sales Leads":
                        hover_data=["company","status"])
     st.plotly_chart(fig, use_container_width=True)
 
-# Akquiseplan
+# -----------------------------
+# Akquiseplan Tab
+# -----------------------------
 elif selected_section == "Akquiseplan":
     st.header(f"Akquiseplan - {selected_branch}")
     df_plan = generate_acquisition_plan(selected_branch, st.session_state.leads_per_branch, action_icons)
@@ -131,14 +145,13 @@ elif selected_section == "Akquiseplan":
     st.subheader("Filter nach empfohlener Aktion")
     selected_actions = st.multiselect("Aktion auswählen", options=list(action_icons.keys()), default=list(action_icons.keys()))
     df_filtered_plan = df_plan[df_plan["Empfohlene_Aktion"].isin(selected_actions)]
-
-    st.dataframe(df_filtered_plan, use_container_width=True)
+    st.dataframe(df_filtered_plan[["company","score","Priorität","Empfohlene_Aktion","Aktion_Icon"]], use_container_width=True)
 
     fig_bar = px.bar(df_filtered_plan, x="company", y="score",
                      color="Priorität", color_discrete_map=priority_colors,
                      text="score", title=f"Akquiseplan: Score & Priorität - {selected_branch}",
                      hover_data=["Empfohlene_Aktion"])
-    fig_bar.update_layout(xaxis_tickangle=-45)
+    fig_bar.update_layout(xaxis_title="Unternehmen", yaxis_title="Score", xaxis_tickangle=-45)
     st.plotly_chart(fig_bar, use_container_width=True)
 
     df_counts = df_filtered_plan.groupby("Empfohlene_Aktion")["company"].count().reset_index(name="Anzahl")
@@ -146,11 +159,14 @@ elif selected_section == "Akquiseplan":
                      title=f"Verteilung der empfohlenen Aktionen - {selected_branch}", color="Empfohlene_Aktion")
     st.plotly_chart(fig_pie, use_container_width=True)
 
-# Proposal
+# -----------------------------
+# Proposal Tab
+# -----------------------------
 elif selected_section == "Proposal":
     st.header(f"Proposal - {selected_branch}")
     df_prop = generate_proposals(selected_branch, st.session_state.leads_per_branch, action_icons)
 
+    st.subheader("Filter nach Aktion")
     selected_actions = st.multiselect("Aktion auswählen", options=list(action_icons.keys()), default=list(action_icons.keys()))
     df_filtered = df_prop[df_prop["Proposal_Type"].isin(selected_actions)]
 
@@ -175,29 +191,24 @@ elif selected_section == "Proposal":
                      title=f"Anteil der Leads pro Aktion - {selected_branch}", color="Proposal_Type")
     st.plotly_chart(fig_pie, use_container_width=True)
 
+# -----------------------------
 # KPIs & Vorteile
+# -----------------------------
 elif selected_section == "KPIs & Vorteile":
     st.header("KPIs & Vorteile")
     df_leads = st.session_state.leads_per_branch[selected_branch].copy()
     total_leads = len(df_leads)
     qualified_leads = df_leads[df_leads["status"]=="qualifiziert"].shape[0]
     avg_score = round(df_leads["score"].mean(),2) if not df_leads.empty else 0
-
     st.metric("Gesamtleads", total_leads)
     st.metric("Qualifizierte Leads", qualified_leads)
     st.metric("Durchschnittlicher Score", avg_score)
+    st.subheader("Vorteile von CrewAI")
+    st.markdown(VORTEILE)
 
-    st.markdown(
-        f"""
-        <div style='padding:15px; background-color:#004080; color:white; border-radius:10px; margin-top:20px; max-width:900px; margin:auto;'>
-            <h3 style='font-size:24px; margin-bottom:12px; text-align:center;'>Vorteile von CrewAI</h3>
-            <p style='font-size:18px; line-height:1.6;'>{VORTEILE}</p>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
+# -----------------------------
 # Kontaktformular
+# -----------------------------
 elif selected_section == "Kontaktformular":
     st.header("Kontaktformular / Kundenanfragen")
     if "kundenanfragen" not in st.session_state:
@@ -229,3 +240,33 @@ elif selected_section == "Kontaktformular":
 
     st.subheader("Alle Kundenanfragen")
     st.dataframe(pd.DataFrame(st.session_state.kundenanfragen), use_container_width=True)
+
+# -----------------------------
+# Branchenübersicht
+# -----------------------------
+elif selected_section == "Branchenübersicht":
+    st.header("Branchenübersicht")
+    summary = []
+    for branch in branches:
+        df = st.session_state.leads_per_branch[branch]
+        total = len(df)
+        qualified = df[df["status"]=="qualifiziert"].shape[0]
+        avg_score = round(df["score"].mean(),2)
+        summary.append({"Branche":branch,"Leads":total,"Qualifizierte":qualified,"Avg_Score":avg_score})
+    df_summary = pd.DataFrame(summary)
+
+    st.subheader("Tabellarische Übersicht")
+    st.dataframe(df_summary, use_container_width=True)
+
+    fig_bar = px.bar(df_summary, x="Branche", y="Leads",
+                     text="Leads", color="Qualifizierte", color_continuous_scale="Blues",
+                     title="Leads pro Branche (Qualifizierte farblich hervorgehoben)")
+    fig_bar.update_layout(xaxis_tickangle=-45)
+    st.plotly_chart(fig_bar, use_container_width=True)
+
+    df_summary["Nicht_qualifiziert"] = df_summary["Leads"] - df_summary["Qualifizierte"]
+    df_melted = df_summary.melt(id_vars=["Branche"], value_vars=["Qualifizierte","Nicht_qualifiziert"],
+                                var_name="Status", value_name="Anzahl")
+    fig_pie = px.pie(df_melted, names="Status", values="Anzahl",
+                     title="Anteil qualifizierter vs. nicht qualifizierter Leads (gesamt)", color="Status")
+    st.plotly_chart(fig_pie, use_container_width=True)
