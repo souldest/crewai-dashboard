@@ -1,21 +1,24 @@
 # marketing_text.py
 
 HEADER = """
-Revolutionieren Sie Ihr Unternehmen mit KI-Agenten
-
-Die Zukunft der Automatisierung beginnt heute. 
-Unser intelligentes System liefert leistungsstarke KI-Agenten, die Ihre Geschäftsprozesse effizienter gestalten, 
-Routineaufgaben automatisieren und Ihr Team bei strategisch wichtigen Entscheidungen unterstützen. 
+<div style='font-size:20px; line-height:1.4;'>
+<b>Revolutionieren Sie Ihr Unternehmen mit KI-Agenten</b><br><br>
+Die Zukunft der Automatisierung beginnt heute.<br>
+Unser intelligentes System liefert leistungsstarke KI-Agenten, die Ihre Geschäftsprozesse effizienter gestalten,
+Routineaufgaben automatisieren und Ihr Team bei strategisch wichtigen Entscheidungen unterstützen.<br><br>
 
 Mit unseren Agenten können Sie:
-- Vertriebs- und Marketingprozesse optimieren und Leads schneller qualifizieren
-- Kundenanfragen automatisch analysieren und personalisierte Antworten liefern
-- Datenbasierte Entscheidungen treffen, die Wachstum und Umsatz steigern
-- Ressourcen freisetzen, damit Ihr Team sich auf kreative und wertschöpfende Aufgaben konzentrieren kann
+<ul>
+<li>Vertriebs- und Marketingprozesse optimieren und Leads schneller qualifizieren</li>
+<li>Kundenanfragen automatisch analysieren und personalisierte Antworten liefern</li>
+<li>Datenbasierte Entscheidungen treffen, die Wachstum und Umsatz steigern</li>
+<li>Ressourcen freisetzen, damit Ihr Team sich auf kreative und wertschöpfende Aufgaben konzentrieren kann</li>
+</ul>
 
-Erleben Sie, wie intelligente Automatisierung Ihren Arbeitsalltag verändert und Wettbewerbsvorteile schafft.
+Erleben Sie, wie intelligente Automatisierung Ihren Arbeitsalltag verändert und Wettbewerbsvorteile schafft.<br><br>
 
 ▶ Jetzt Demo anfragen und das volle Potenzial Ihrer KI-Agenten entdecken
+</div>
 """
 
 # --- CREWAI Abschnitt ---
