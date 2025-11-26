@@ -7,7 +7,7 @@ import io
 
 # Marketing Texte & Agenten
 from marketing_demo import HEADER, CREWAI, AGENTEN, VORTEILE, KONTAKT
-from sales_leads import generate_all_leads
+from sales_leads import generate_all_leads, generate_branch_leads
 from akquise_plan import generate_acquisition_plan
 from proposal import generate_proposals
 
