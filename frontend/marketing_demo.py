@@ -1,6 +1,5 @@
 # marketing_text.py
 
-# --- HEADER / Einführung ---
 HEADER = """
 <div style="text-align:center; padding: 30px; background-color:#f5f7fa; border-radius:10px; margin-bottom:20px;">
     <h1 style="font-size:48px; font-weight:800; margin-bottom:20px;">
@@ -8,7 +7,7 @@ HEADER = """
     </h1>
     <p style="font-size:22px; line-height:1.5; margin-bottom:25px;">
         Die Zukunft der Automatisierung beginnt heute.<br>
-        Unsere intelligenten, individuell trainierten KI-Agenten übernehmen Analyse, Planung, 
+        Unsere intelligenten, individuell trainierten KI-Agenten übernehmen Analyse, Planung,
         Entscheidungsfindung und operative Aufgaben – vollautomatisch und in Echtzeit.
         So werden Prozesse schneller, kosteneffizienter und skalierbar.
     </p>
