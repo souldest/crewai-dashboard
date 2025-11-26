@@ -38,21 +38,21 @@ st.markdown(
 )
 
 # -----------------------------
-# Agenten-Text nach Funktion 
+# Agenten-Text nach Funktion (unter CREWAI)
+# -----------------------------
 st.markdown("<hr style='margin-top:20px; margin-bottom:20px;'>", unsafe_allow_html=True)
 
 # Interaktive Auswahl der Funktion
 selected_function = st.selectbox("Wähle eine Funktion:", list(AGENTEN.keys()))
 
-# Agenten-Text aus marketing_demo.py holen
-selected_function_text = AGENTEN[selected_function].replace("\n", "<br>")
+# Agenten-Text aus marketing_demo.py
+selected_function_text = AGENTEN[selected_function]
 
-# Textblock im Dashboard anzeigen
+# Markdown direkt rendern
 st.markdown(
     f"""
     <div style='padding:15px; background-color:#f2f7ff; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
-        <h3 style='color:#004080; font-size:22px; margin-bottom:12px; text-align:center;'>Agenten - {selected_function}</h3>
-        <p style='font-size:18px; line-height:1.6; text-align:left;'>{selected_function_text}</p>
+        {selected_function_text}
     </div>
     """,
     unsafe_allow_html=True
