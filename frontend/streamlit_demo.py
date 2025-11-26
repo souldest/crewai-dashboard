@@ -16,23 +16,20 @@ st.set_page_config(page_title="CrewAI Sales Dashboard", layout="wide")
 # -----------------------------
 # UI: Header & Marketing-Text
 # -----------------------------
-st.markdown("<h1 style='text-align:center; font-size:48px; font-weight:800;'>Revolutionieren Sie Ihr Unternehmen mit KI-Agenten</h1>", unsafe_allow_html=True)
-
-st.markdown("<p style='text-align:center; font-size:22px; line-height:1.5;'>Die Zukunft der Automatisierung beginnt heute.<br>Unsere intelligenten, individuell trainierten KI-Agenten übernehmen Analyse, Planung, Entscheidungsfindung und operative Aufgaben – vollautomatisch und in Echtzeit. So werden Prozesse schneller, kosteneffizienter und skalierbar.</p>", unsafe_allow_html=True)
-
-st.markdown("<p style='text-align:center; font-size:24px; font-weight:700; color:#0073e6;'>▶ Jetzt Demo anfragen und das Potenzial echter KI erleben.</p>", unsafe_allow_html=True)
-
-st.markdown("<hr style='margin-top:20px; margin-bottom:20px;'>", unsafe_allow_html=True)
+header_html = """
+<h1 style='text-align:center; font-size:48px; font-weight:800;'>Revolutionieren Sie Ihr Unternehmen mit KI-Agenten</h1>
+<p style='text-align:center; font-size:22px; line-height:1.5;'>Die Zukunft der Automatisierung beginnt heute.<br>Unsere Agenten arbeiten 24/7, um Leads zu qualifizieren, Prozesse zu automatisieren und Umsatz zu skalieren.</p>
+<p style='text-align:center; font-size:24px; font-weight:700; color:#0073e6;'>▶ Jetzt Demo anfragen und das Potenzial von CrewAI live erleben</p>
+<hr style='margin-top:20px; margin-bottom:20px;'>
+"""
+st.markdown(header_html, unsafe_allow_html=True)
 
 # -----------------------------
 # CrewAI Abschnitt
 # -----------------------------
 st.subheader("CrewAI – Intelligente Agenten-Teams")
-st.markdown(CREWAI)
 
-# -----------------------------
 # KI-Agenten nach Funktion
-# -----------------------------
 st.subheader("KI-Agenten nach Funktion")
 for kategorie, text in AGENTEN.items():
     with st.expander(kategorie, expanded=False):
@@ -63,8 +60,7 @@ branches = [
 selected_branch = st.sidebar.selectbox("Wählen Sie eine Branche / Szenario", branches)
 selected_agent = st.sidebar.radio(
     "Agenten / Ansicht",
-    ["Sales Leads", "Akquiseplan", "Proposal", "KPIs & Vorteile", "Kontaktformular", "Branchenübersicht"]
-)
+    ["Sales Leads", "Akquiseplan", "Proposal", "KPIs & Vorteile", "Kontaktformular", "Branchenübersicht"] )
 
 # -----------------------------
 # Action Icons
@@ -98,7 +94,6 @@ if "leads_per_branch" not in st.session_state:
     def generate_branch_leads(branch, n_companies_per_branch=45, n_qualifiziert=None):
         if n_qualifiziert is None:
             n_qualifiziert = random.randint(10, 30)
-
         profile = branch_profiles[branch]
         companies = [c for c in all_companies if c.startswith(branch)]
         companies = companies[:n_companies_per_branch]
@@ -130,10 +125,11 @@ if "leads_per_branch" not in st.session_state:
         branch: generate_branch_leads(branch) for branch in branches
     }
 
+# Current branch leads
 df_leads = st.session_state.leads_per_branch[selected_branch].copy()
 
 # -----------------------------
-# Akquiseplan
+# Akquiseplan generieren
 # -----------------------------
 def generate_acquisition_plan(df, top_n=30):
     df_qualified = df[df["status"].isin(["qualifiziert", "neu"])].copy().sort_values(by="score", ascending=False)
@@ -168,7 +164,6 @@ def generate_proposals(df_plan):
         Avg_Score=("score", "mean"),
         Count=("score", "count")
     ).reset_index().rename(columns={"Empfohlene_Aktion": "Proposal_Type"})
-
     agg["Avg_Score"] = agg["Avg_Score"].round(2)
 
     # Interpretation und Handlungsempfehlung
@@ -224,7 +219,7 @@ max_rate = df_prop["Avg_Score"].max() if not df_prop.empty else 0
 st.title("CrewAI Sales Dashboard")
 
 # -----------------------------
-# Tabs: Sales Leads / Akquiseplan / Proposal / KPIs / Kontaktformular / Branchenübersicht
+# Tabs / Views
 # -----------------------------
 if selected_agent == "Kontaktformular":
     st.header("Kontaktformular / Kundenanfrage")
@@ -307,4 +302,41 @@ if selected_agent == "Kontaktformular":
     st.dataframe(df_plan[["company", "score", "Priorität", "Empfohlene_Aktion", "Aktion_Icon"]], use_container_width=True)
     st.markdown("**Legende:** 🔴 Sofort kontaktieren 🟠 Anschreiben 🟢 Demo vereinbaren")
 
-# Andere Tabs (Sales Leads, Akquiseplan, Proposal, KPIs & Branchenübersicht) wie zuvor implementieren...
+else:
+    # Fallback: implement other views
+    if selected_agent == "Sales Leads":
+        st.header("Sales Leads")
+        st.write(f"Branch: {selected_branch}")
+        st.dataframe(df_leads, use_container_width=True)
+
+    elif selected_agent == "Akquiseplan":
+        st.header("Akquiseplan")
+        st.dataframe(df_plan, use_container_width=True)
+
+    elif selected_agent == "Proposal":
+        st.header("Proposal Übersicht")
+        st.table(df_prop)
+
+    elif selected_agent == "KPIs & Vorteile":
+        st.header("KPIs")
+        cols = st.columns(4)
+        cols[0].metric("Total Leads", total_leads)
+        cols[1].metric("Qualifizierte Leads", qualified_leads)
+        cols[2].metric("Durchschnittsscore", f"{avg_score:.2f}")
+        cols[3].metric("Max Proposal Score", f"{max_rate:.2f}")
+
+    elif selected_agent == "Branchenübersicht":
+        st.header("Branchenübersicht")
+        branch_summary = []
+        for b in branches:
+            df_b = st.session_state.leads_per_branch[b]
+            branch_summary.append({
+                "Branche": b,
+                "Anzahl Leads": len(df_b),
+                "Durchschnittsscore": round(df_b['score'].mean(),2)
+            })
+        st.dataframe(pd.DataFrame(branch_summary), use_container_width=True)
+
+# Footer
+st.markdown("---")
+st.markdown("© CrewAI | Demo Dashboard")
