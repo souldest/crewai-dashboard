@@ -218,11 +218,15 @@ df_prop = generate_proposals(df_plan)
 
 # -----------------------------
 # KPIs
-# -----------------------------
+# -----------------------------# 
 total_leads = len(df_leads)
 qualified_leads = df_leads[df_leads["status"].isin(["qualifiziert", "neu"])].shape[0]
 avg_score = df_leads["score"].mean() if not df_leads.empty else 0
 max_rate = df_prop["Avg_Score"].max() if not df_prop.empty else 0
+
+# KPI-Anzeige mit Streamlit
+st.subheader("🚀 Key Performance Indicators (KPIs)")
+
 
 # -----------------------------
 # Dashboard-Titel

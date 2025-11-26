@@ -1,20 +1,21 @@
 # marketing_text.py
 
 HEADER = """
-<div style="text-align:center; padding: 30px; background-color:#f5f7fa; border-radius:10px; margin-bottom:20px;">
-    <h1 style="font-size:48px; font-weight:800; margin-bottom:20px;">
-        Revolutionieren Sie Ihr Unternehmen mit KI-Agenten
-    </h1>
-    <p style="font-size:22px; line-height:1.5; margin-bottom:25px;">
-        Die Zukunft der Automatisierung beginnt heute.<br>
-        Unsere intelligenten, individuell trainierten KI-Agenten übernehmen Analyse, Planung,
-        Entscheidungsfindung und operative Aufgaben – vollautomatisch und in Echtzeit.
-        So werden Prozesse schneller, kosteneffizienter und skalierbar.
-    </p>
-    <p style="font-size:24px; font-weight:700; color:#0073e6; margin-top:20px;">
-        ▶ Jetzt Demo anfragen und das Potenzial echter KI erleben.
-    </p>
-</div>
+Revolutionieren Sie Ihr Unternehmen mit KI-Agenten
+
+Die Zukunft der Automatisierung beginnt heute. 
+Unser intelligentes System liefert leistungsstarke KI-Agenten, die Ihre Geschäftsprozesse effizienter gestalten, 
+Routineaufgaben automatisieren und Ihr Team bei strategisch wichtigen Entscheidungen unterstützen. 
+
+Mit unseren Agenten können Sie:
+- Vertriebs- und Marketingprozesse optimieren und Leads schneller qualifizieren
+- Kundenanfragen automatisch analysieren und personalisierte Antworten liefern
+- Datenbasierte Entscheidungen treffen, die Wachstum und Umsatz steigern
+- Ressourcen freisetzen, damit Ihr Team sich auf kreative und wertschöpfende Aufgaben konzentrieren kann
+
+Erleben Sie, wie intelligente Automatisierung Ihren Arbeitsalltag verändert und Wettbewerbsvorteile schafft.
+
+▶ Jetzt Demo anfragen und das volle Potenzial Ihrer KI-Agenten entdecken
 """
 
 # --- CREWAI Abschnitt ---
