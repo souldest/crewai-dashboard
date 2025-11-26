@@ -57,7 +57,7 @@ st.markdown(
 # -----------------------------
 # Agenten nach Funktion direkt unter CREWAI
 # -----------------------------
-st.markdown("<h2 style='text-align:center; color:white; margin-top:20px;'>Alle Agenten nach Funktion</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align:center; color:white; margin-top:20px;'>Agenten nach Funktion</h2>", unsafe_allow_html=True)
 for func_name, func_text in AGENTEN.items():
     func_text_html = func_text.replace("\n", "<br>")
     st.markdown(
