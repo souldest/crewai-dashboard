@@ -7,6 +7,12 @@ from datetime import datetime
 import numpy as np
 from marketing_demo import HEADER, CREWAI, AGENTEN, VORTEILE, KONTAKT
 
+
+# -----------------------------
+# Streamlit-Seiteneinstellungen
+# -----------------------------
+st.set_page_config(page_title="CrewAI Sales Dashboard", layout="wide")
+
 # -----------------------------
 # UI: Header & Marketing-Text
 # -----------------------------
