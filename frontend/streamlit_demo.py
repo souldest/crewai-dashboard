@@ -19,45 +19,46 @@ st.set_page_config(page_title="CrewAI Sales Dashboard", layout="wide")
 
 # -----------------------------
 # Oberer Dashboard-Bereich: HEADER, CREWAI, TECHNOLOGIEN
+# Einheitliche Schriftgröße und Stil
 # -----------------------------
+
+# Einheitliche Schriftgröße für Fließtext
+text_font_size = "18px"
+title_font_size = "32px"
 
 # HEADER
-st.markdown(
-    f"""
-    <div style='text-align:center; padding:25px; background-color:#f0f8ff; border-radius:10px; margin-bottom:10px;'>
-        <h1 style='color:#0073e6; font-size:38px; margin-bottom:15px;'>{HEADER.replace('\n','<br>')}</h1>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-# CREWAI Abschnitt
-st.markdown(
-    f"""
-    <div style='text-align:center; padding:20px; background-color:#e6f2ff; border-radius:10px; margin-bottom:10px;'>
-        <h2 style='color:#0073e6; font-size:30px; margin-bottom:12px;'>{CREWAI.replace('\n','<br>')}</h2>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-# -----------------------------
-# TECHNOLOGIEN Abschnitt stabil sichtbar
-# -----------------------------
-tech_text = TECHNOLOGIEN.replace("\n", "<br>")  # Zeilenumbrüche in <br> umwandeln
-
-with st.container():  # Container sorgt für zuverlässige Darstellung
+header_text = HEADER.replace("\n", "<br>")
+with st.container():
     st.markdown(
-        """
-        <div style='padding:20px; background-color:#ffffff; border-radius:10px; margin-bottom:15px; min-height:200px;'>
-            <h3 style='color:#004080; font-size:26px; margin-bottom:12px; text-align:center;'>Technologien & Infrastruktur</h3>
+        f"""
+        <div style='padding:20px; background-color:#f0f8ff; border-radius:10px; margin-bottom:10px;'>
+            <h1 style='color:#0073e6; font-size:{title_font_size}; margin-bottom:12px; text-align:center;'>{header_text}</h1>
         </div>
         """,
         unsafe_allow_html=True
     )
+
+# CREWAI Abschnitt
+crewai_text = CREWAI.replace("\n", "<br>")
+with st.container():
     st.markdown(
         f"""
-        <div style='padding:10px 20px; max-width:900px; margin:auto; font-size:16px; line-height:1.6;'>
+        <div style='padding:15px; background-color:#e6f2ff; border-radius:10px; margin-bottom:10px;'>
+            <h2 style='color:#0073e6; font-size:{title_font_size}; margin-bottom:12px; text-align:center;'>{crewai_text}</h2>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+# TECHNOLOGIEN Abschnitt
+tech_text = TECHNOLOGIEN.replace("\n", "<br>")
+with st.container():
+    st.markdown(
+        f"""
+        <div style='padding:15px; background-color:#ffffff; border-radius:10px; margin-bottom:15px; min-height:200px;'>
+            <h3 style='color:#004080; font-size:{title_font_size}; margin-bottom:12px; text-align:center;'>Technologien & Infrastruktur</h3>
+        </div>
+        <div style='padding:10px 20px; max-width:900px; margin:auto; font-size:{text_font_size}; line-height:1.6;'>
             {tech_text}
         </div>
         """,
