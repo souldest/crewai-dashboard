@@ -6,6 +6,7 @@ from datetime import datetime
 import io
 
 # Marketing Texte & Agenten
+from technologien import TECHNOLOGIEN
 from marketing_demo import HEADER, CREWAI, AGENTEN, VORTEILE, KONTAKT
 from sales_leads import generate_all_leads, generate_branch_leads
 from akquise_plan import generate_acquisition_plan
