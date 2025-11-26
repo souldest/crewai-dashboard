@@ -28,7 +28,6 @@ st.markdown(f"<hr style='margin-top:20px; margin-bottom:20px;'>", unsafe_allow_h
 # -----------------------------
 st.sidebar.title("Navigation")
 sections = [
-    "Branchen auswählen",
     "Sales Leads",
     "Akquiseplan",
     "Proposal",
@@ -38,20 +37,22 @@ sections = [
 ]
 selected_section = st.sidebar.radio("Bereich wählen", sections)
 
-# Branchenliste
+# -----------------------------
+# Sidebar: Branche auswählen
+# -----------------------------
 branches = [
     "Modellhäuser", "IT", "Finance", "Banken", "Automobil",
     "Versicherungen", "Marketing", "Werbekampagnen", "Dienstleister",
     "Freelancer", "Jobsuchende", "E-Commerce", "Bildung", "Gesundheit",
     "Tourismus", "Logistik", "Media", "Consulting", "Software", "Hardware"
 ]
+selected_branch = st.sidebar.selectbox("Branche auswählen", branches)
 
+# -----------------------------
 # Session-State initialisieren
+# -----------------------------
 if "leads_per_branch" not in st.session_state:
     st.session_state.leads_per_branch, st.session_state.branch_profiles = generate_all_leads(branches)
-
-# Auswahl Branche
-selected_branch = st.sidebar.selectbox("Branche auswählen", branches)
 
 # Action Icons
 action_icons = {"Sofort kontaktieren":"🔴", "Anschreiben":"🟠", "Demo vereinbaren":"🟢"}
@@ -164,6 +165,8 @@ elif selected_section == "Kontaktformular":
 
 elif selected_section == "Branchenübersicht":
     st.header("Branchenübersicht")
+    
+    # Tabelle
     summary = []
     for branch in branches:
         df = st.session_state.leads_per_branch[branch]
@@ -172,4 +175,24 @@ elif selected_section == "Branchenübersicht":
         avg_score = round(df["score"].mean(),2)
         summary.append({"Branche":branch, "Leads":total, "Qualifizierte":qualified, "Avg_Score":avg_score})
     df_summary = pd.DataFrame(summary)
+    st.subheader("Tabellarische Übersicht")
     st.dataframe(df_summary, use_container_width=True)
+    
+    # Balkendiagramm: Leads pro Branche
+    fig_bar = px.bar(df_summary,
+                     x="Branche",
+                     y="Leads",
+                     text="Leads",
+                     color="Qualifizierte",
+                     color_continuous_scale="Blues",
+                     title="Leads pro Branche (Qualifizierte farblich hervorgehoben)")
+    fig_bar.update_layout(xaxis_tickangle=-45)
+    st.plotly_chart(fig_bar, use_container_width=True)
+    
+    # Kreisdiagramm: Anteil qualifizierte vs. nicht qualifizierte Leads
+    df_summary["Nicht_qualifiziert"] = df_summary["Leads"] - df_summary["Qualifizierte"]
+    df_melted = df_summary.melt(id_vars=["Branche"], value_vars=["Qualifizierte","Nicht_qualifiziert"],
+                                var_name="Status", value_name="Anzahl")
+    fig_pie = px.pie(df_melted, names="Status", values="Anzahl", color="Status",
+                     title="Anteil qualifizierter vs. nicht qualifizierter Leads (gesamt)")
+    st.plotly_chart(fig_pie, use_container_width=True)
