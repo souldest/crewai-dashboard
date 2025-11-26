@@ -7,9 +7,16 @@ from datetime import datetime
 import numpy as np
 from marketing_demo import HEADER, CREWAI, AGENTEN, VORTEILE, KONTAKT
 
-# --- HEADER ---
-st.markdown(f"<h1 style='text-align:center'>{HEADER}</h1>", unsafe_allow_html=True)
-st.markdown("<hr>", unsafe_allow_html=True)
+# -----------------------------
+# UI: Header & Marketing-Text
+# -----------------------------
+st.markdown("<h1 style='text-align:center; font-size:48px; font-weight:800;'>Revolutionieren Sie Ihr Unternehmen mit KI-Agenten</h>
+
+st.markdown("<p style='text-align:center; font-size:22px; line-height:1.5;'>Die Zukunft der Automatisierung beginnt heute.<br>Unse>
+
+st.markdown("<p style='text-align:center; font-size:24px; font-weight:700; color:#0073e6;'>▶ Jetzt Demo anfragen und das Potenzial>
+
+st.markdown("<hr style='margin-top:20px; margin-bottom:20px;'>", unsafe_allow_html=True)
 
 # --- CREWAI Abschnitt ---
 st.subheader("CrewAI – Intelligente Agenten-Teams")
