@@ -37,18 +37,27 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Agenten-Text nach Funktion
-selected_function = "Vertrieb & Marketing"
+# -----------------------------
+# Agenten-Text nach Funktion 
+st.markdown("<hr style='margin-top:20px; margin-bottom:20px;'>", unsafe_allow_html=True)
+
+# Interaktive Auswahl der Funktion
+selected_function = st.selectbox("Wähle eine Funktion:", list(AGENTEN.keys()))
+
+# Agenten-Text aus marketing_demo.py holen
 selected_function_text = AGENTEN[selected_function].replace("\n", "<br>")
+
+# Textblock im Dashboard anzeigen
 st.markdown(
     f"""
-    <div style='padding:15px; background-color:#f2f7ff; border-radius:10px; margin-bottom:10px; max-width:900px; margin:auto;'>
+    <div style='padding:15px; background-color:#f2f7ff; border-radius:10px; margin-bottom:20px; max-width:900px; margin:auto;'>
         <h3 style='color:#004080; font-size:22px; margin-bottom:12px; text-align:center;'>Agenten - {selected_function}</h3>
         <p style='font-size:18px; line-height:1.6; text-align:left;'>{selected_function_text}</p>
     </div>
     """,
     unsafe_allow_html=True
 )
+
 
 # TECHNOLOGIEN Abschnitt
 tech_text = TECHNOLOGIEN.replace("\n", "<br>")
