@@ -19,12 +19,12 @@ st.set_page_config(page_title="CrewAI Sales Dashboard", layout="wide")
 
 # -----------------------------
 # Oberer Dashboard-Bereich: HEADER, CREWAI, TECHNOLOGIEN
-# Einheitliche Schriftgröße und Stil
+# Einheitliche Schriftgrößen für harmonisches Layout
 # -----------------------------
 
-# Einheitliche Schriftgröße für Fließtext
-text_font_size = "18px"
-title_font_size = "32px"
+# Schriftgrößen
+section_title_font_size = "28px"  # alle Titel ähnlich groß
+text_font_size = "18px"           # Fließtext
 
 # HEADER
 header_text = HEADER.replace("\n", "<br>")
@@ -32,7 +32,7 @@ with st.container():
     st.markdown(
         f"""
         <div style='padding:20px; background-color:#f0f8ff; border-radius:10px; margin-bottom:10px;'>
-            <h1 style='color:#0073e6; font-size:{title_font_size}; margin-bottom:12px; text-align:center;'>{header_text}</h1>
+            <h1 style='color:#0073e6; font-size:{section_title_font_size}; margin-bottom:12px; text-align:center;'>{header_text}</h1>
         </div>
         """,
         unsafe_allow_html=True
@@ -44,7 +44,7 @@ with st.container():
     st.markdown(
         f"""
         <div style='padding:15px; background-color:#e6f2ff; border-radius:10px; margin-bottom:10px;'>
-            <h2 style='color:#0073e6; font-size:{title_font_size}; margin-bottom:12px; text-align:center;'>{crewai_text}</h2>
+            <h2 style='color:#0073e6; font-size:{section_title_font_size}; margin-bottom:12px; text-align:center;'>{crewai_text}</h2>
         </div>
         """,
         unsafe_allow_html=True
@@ -56,7 +56,7 @@ with st.container():
     st.markdown(
         f"""
         <div style='padding:15px; background-color:#ffffff; border-radius:10px; margin-bottom:15px; min-height:200px;'>
-            <h3 style='color:#004080; font-size:{title_font_size}; margin-bottom:12px; text-align:center;'>Technologien & Infrastruktur</h3>
+            <h3 style='color:#004080; font-size:{section_title_font_size}; margin-bottom:12px; text-align:center;'>Technologien & Infrastruktur</h3>
         </div>
         <div style='padding:10px 20px; max-width:900px; margin:auto; font-size:{text_font_size}; line-height:1.6;'>
             {tech_text}
