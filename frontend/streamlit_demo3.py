@@ -322,14 +322,47 @@ elif selected_agent == "Proposal":
     """)
 
 # -----------------------------
-# KPIs Tab
+# KPIs – ALWAYS SHOW THEM
 # -----------------------------
-elif selected_agent == "KPIs":
-    st.header(f"KPIs & Vorteile – {selected_branch}")
-    st.metric("Gesamtanzahl Leads", total_leads)
-    st.metric("Qualifizierte Leads", qualified_leads)
-    st.metric("Durchschnittlicher Lead Score", f"{avg_score:.2f}")
-    st.metric("Max. Proposal Avg Score", f"{max_rate:.2f}")
+st.subheader("🚀 Key Performance Indicators (KPIs)")
+
+# Defensive checks
+if "df_leads" not in globals():
+    st.error("❌ df_leads ist nicht definiert!")
+else:
+    st.write("df_leads geladen:", df_leads.shape)
+
+if "df_prop" not in globals():
+    st.error("❌ df_prop ist nicht definiert!")
+else:
+    st.write("df_prop geladen:", df_prop.shape)
+
+# KPI-Berechnung mit Fallbacks
+total_leads = len(df_leads) if "df_leads" in globals() else 0
+qualified_leads = (
+    df_leads[df_leads["status"].isin(["qualifiziert", "neu"])].shape[0]
+    if "df_leads" in globals() and not df_leads.empty else 0
+)
+avg_score = (
+    df_leads["score"].mean()
+    if "df_leads" in globals() and not df_leads.empty else 0
+)
+max_rate = (
+    df_prop["Avg_Score"].max()
+    if "df_prop" in globals() and not df_prop.empty else 0
+)
+
+# KPI-Boxes
+col1, col2, col3, col4 = st.columns(4)
+
+col1.metric("📈 Gesamte Leads", total_leads)
+
+col2.metric("🎯 Qualifizierte Leads", qualified_leads)
+
+col3.metric("⭐ Durchschnittlicher Score", f"{avg_score:.2f}")
+
+col4.metric("🏆 Höchste Erfolgsquote", f"{max_rate:.2f}%")
+
 
 # -----------------------------
 # Kontaktformular Tab
