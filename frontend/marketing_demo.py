@@ -1,15 +1,24 @@
 # marketing_text.py
 
-# --- HEADER / Einführung ---
 HEADER = """
-Revolutionieren Sie Ihr Unternehmen mit KI-Agenten  
-Die Zukunft der Automatisierung beginnt heute.
+<div style="text-align:center; padding: 30px 0;">
 
-Unsere intelligenten, individuell trainierten KI-Agenten übernehmen Analyse, Planung,
-Entscheidungsfindung und operative Aufgaben – vollautomatisch und in Echtzeit.
-So werden Prozesse schneller, kosteneffizienter und skalierbar.
+    <h1 style="font-size: 42px; font-weight: 800; margin-bottom: 20px;">
+        Revolutionieren Sie Ihr Unternehmen mit KI-Agenten
+    </h1>
 
-▶ Jetzt Demo anfragen und das Potenzial echter KI erleben.
+    <p style="font-size: 22px; line-height: 1.5; margin-bottom: 25px;">
+        Die Zukunft der Automatisierung beginnt heute.<br>
+        Unsere intelligenten, individuell trainierten KI-Agenten übernehmen Analyse, Planung, 
+        Entscheidungsfindung und operative Aufgaben – vollautomatisch und in Echtzeit.
+        So werden Prozesse schneller, kosteneffizienter und skalierbar.
+    </p>
+
+    <p style="font-size: 24px; font-weight: 700; color:#0073e6; margin-top: 20px;">
+        ▶ Jetzt Demo anfragen und das Potenzial echter KI erleben.
+    </p>
+
+</div>
 """
 
 # --- CREWAI Abschnitt ---

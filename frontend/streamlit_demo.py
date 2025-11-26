@@ -16,8 +16,8 @@ st.set_page_config(page_title="CrewAI Sales Dashboard", layout="wide")
 # -----------------------------
 # UI: Header & Marketing-Text
 # -----------------------------
-st.markdown(f"<div style='text-align:center'>{HEADER}</div>", unsafe_allow_html=True)
-st.markdown("<hr>", unsafe_allow_html=True)
+st.markdown(HEADER, unsafe_allow_html=True)
+st.markdown("<hr style='margin-top:20px; margin-bottom:20px;'>", unsafe_allow_html=True)
 
 st.subheader("CrewAI – Intelligente Agenten-Teams")
 st.markdown(CREWAI)
