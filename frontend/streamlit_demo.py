@@ -17,46 +17,38 @@ from proposal import generate_proposals
 # -----------------------------
 st.set_page_config(page_title="CrewAI Sales Dashboard", layout="wide")
 
-# HEADER
+# Schriftgrößen definieren
+header_font_size = "24px"
+crewai_font_size = "22px"
+tech_title_font_size = "20px"
+text_font_size = "18px"
+
+# HEADER-Text vorbereiten
 header_text = HEADER.replace("\n", "<br>")
-with st.container():
-    st.markdown(
-        f"""
-        <div style='padding:20px; background-color:#f0f8ff; border-radius:10px; margin-bottom:10px;'>
-            <h1 style='color:#0073e6; font-size:{header_font_size}; margin-bottom:12px; text-align:center;'>{header_text}</h1>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+st.markdown(
+    f"<h1 style='color:#0073e6; font-size:{header_font_size}; margin-bottom:12px; text-align:center;'>{header_text}</h1>",
+    unsafe_allow_html=True
+)
 
-# CREWAI Abschnitt
+# CREWAI-Text vorbereiten
 crewai_text = CREWAI.replace("\n", "<br>")
-with st.container():
-    st.markdown(
-        f"""
-        <div style='padding:15px; background-color:#e6f2ff; border-radius:10px; margin-bottom:10px;'>
-            <h2 style='color:#0073e6; font-size:{crewai_font_size}; margin-bottom:12px; text-align:center;'>{crewai_text}</h2>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+st.markdown(
+    f"<h2 style='color:#0073e6; font-size:{crewai_font_size}; margin-bottom:12px; text-align:center;'>{crewai_text}</h2>",
+    unsafe_allow_html=True
+)
 
-# -----------------------------
-# Agenten-Text nach Funktion 
-# -----------------------------
-selected_function = "Vertrieb & Marketing"  # Standardwert oder kann über st.selectbox gesetzt werden
-
+# Agenten-Text nach Funktion
+selected_function = "Vertrieb & Marketing"
 selected_function_text = AGENTEN[selected_function].replace("\n", "<br>")
-with st.container():
-    st.markdown(
-        f"""
-        <div style='padding:15px; background-color:#f2f7ff; border-radius:10px; margin-bottom:10px; max-width:900px; margin:auto;'>
-            <h3 style='color:#004080; font-size:22px; margin-bottom:12px; text-align:center;'>Agenten - {selected_function}</h3>
-            <p style='font-size:18px; line-height:1.6; text-align:left;'>{selected_function_text}</p>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+st.markdown(
+    f"""
+    <div style='padding:15px; background-color:#f2f7ff; border-radius:10px; margin-bottom:10px; max-width:900px; margin:auto;'>
+        <h3 style='color:#004080; font-size:22px; margin-bottom:12px; text-align:center;'>Agenten - {selected_function}</h3>
+        <p style='font-size:18px; line-height:1.6; text-align:left;'>{selected_function_text}</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 # TECHNOLOGIEN Abschnitt
 tech_text = TECHNOLOGIEN.replace("\n", "<br>")
