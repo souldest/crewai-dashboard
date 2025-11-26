@@ -2,7 +2,7 @@
 
 TECHNOLOGIEN = (
     "Unsere KI-Agenten basieren auf einer leistungsstarken, sicheren und skalierbaren Technologieplattform.\n\n"
-    "☁️oderne Cloud-Ökosysteme\n"
+    "Moderne Cloud-Ökosysteme\n"
     "Wir entwickeln, deployen und betreiben KI-Agenten in allen führenden Cloud-Umgebungen:\n"
     "- Microsoft Azure – Enterprise-Security, AD-Integration, Azure ML, Data Factory\n"
     "- Amazon AWS – Skalierbare KI-Workloads, Lambda, S3, SageMaker\n"
