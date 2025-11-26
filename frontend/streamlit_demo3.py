@@ -306,7 +306,7 @@ elif selected_agent == "Proposal":
 # -----------------------------
 # KPIs & Vorteile Tab
 # -----------------------------
-elif selected_agent == "KPIs & Vorteile":
+elif selected_agent == "KPIs":
     st.header(f"KPIs & Vorteile – {selected_branch}")
     st.metric("Gesamtanzahl Leads", total_leads)
     st.metric("Qualifizierte Leads", qualified_leads)
