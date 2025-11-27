@@ -4,9 +4,7 @@ def get_agent_types_markdown():
                 margin-bottom:20px; max-width:900px; margin-left:auto; margin-right:auto;
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);'>
 
-        <h2 style='font-size:24px; margin-bottom:12px; text-align:center;'>
-            Arten von KI-Agenten
-        </h2>
+        <h2 style='font-size:24px; margin-bottom:12px; text-align:center;'>Arten von KI-Agenten</h2>
 
         <p style='font-size:18px; line-height:1.6;'>
             Moderne KI-Agenten lassen sich in verschiedene Kategorien einteilen – je nach Zielsetzung,
