@@ -57,7 +57,9 @@ st.markdown(
 
 
 # Agenten Arten
-# Schwarzen Hintergrund für das Dashboard setzen
+import streamlit as st
+
+# Schwarzen Hintergrund setzen
 st.markdown(
     """
     <style>
@@ -65,17 +67,32 @@ st.markdown(
         background-color: #000000;
         color: #ffffff;
     }
+    .blue-card {
+        background-color: #1a73e8;
+        color: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+    }
+    table {
+        color: #ffffff;
+    }
+    th {
+        text-align: left;
+        border-bottom: 1px solid #ffffff;
+        padding: 6px;
+    }
+    td {
+        padding: 4px 6px;
+    }
     </style>
     """,
     unsafe_allow_html=True
 )
-# Anzeige in Streamlit mit hellblauer Karte und weißer Schrift
+
+
+# Anzeige in einer hellblauen Karte 
 st.markdown(
-    f"""
-    <div style='background-color:#1a73e8; color:#ffffff; padding:20px; border-radius:12px;'>
-    {get_agent_types_markdown()}
-    </div>
-    """,
+    f"<div class='blue-card'>{get_agent_types_markdown()}</div>",
     unsafe_allow_html=True
 )
 
