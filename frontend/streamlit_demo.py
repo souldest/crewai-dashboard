@@ -57,45 +57,17 @@ st.markdown(
 
 
 # Agenten Arten
-import streamlit as st
-
-# Schwarzen Hintergrund setzen
+# Anzeige im gleichen Stil wie CrewAI-Abschnitt
 st.markdown(
-    """
-    <style>
-    body {
-        background-color: #000000;
-        color: #ffffff;
-    }
-    .blue-card {
-        background-color: #1a73e8;
-        color: #ffffff;
-        padding: 20px;
-        border-radius: 12px;
-    }
-    table {
-        color: #ffffff;
-    }
-    th {
-        text-align: left;
-        border-bottom: 1px solid #ffffff;
-        padding: 6px;
-    }
-    td {
-        padding: 4px 6px;
-    }
-    </style>
+    f"""
+    <div style='padding:20px; background-color:#4da6ff; color:white; border-radius:15px; margin-bottom:20px; max-width:900px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);'>
+        <h2 style='font-size:24px; margin-bottom:12px; text-align:center;'>Arten von KI-Agenten – sofort einsatzbereit und zukunftssicher</h2>
+        <p style='font-size:18px; line-height:1.6;'>{AGENTENARTEN}</p>
+    </div>
     """,
     unsafe_allow_html=True
 )
-
-
-# Anzeige in einer hellblauen Karte 
-st.markdown(
-    f"<div class='blue-card'>{get_agent_types_markdown()}</div>",
-    unsafe_allow_html=True
-)
-
 
 # -----------------------------
 # Agenten nach Funktion 

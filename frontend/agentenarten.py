@@ -1,8 +1,8 @@
-def get_agent_types_markdown():
-    return """
+
+AGENTENARTEN = """
 <h1>Arten von KI-Agenten – sofort einsatzbereit und zukunftssicher</h1>
 
-Unsere KI-Agenten decken eine breite Palette an Funktionen ab – von schnellen Automationen über datengetriebene Analysen bis hin zu komplexen Multi-Agenten-Systemen. Sie helfen Unternehmen, Prozesse zu beschleunigen, Fehler zu reduzieren und Entscheidungen auf Basis präziser Daten zu treffen – **rund um die Uhr, skalierbar und sicher**.
+Unsere KI-Agenten decken eine breite Palette an Funktionen ab – von schnellen Automationen über datengetriebene Analysen bis hin zu komplexen Multi-Agenten-Systemen. Sie helfen Unternehmen, Prozesse zu beschleunigen, Fehler zu reduzieren und Entscheidungen auf Basis präziser Daten zu treffen – rund um die Uhr, skalierbar und sicher.
 
 **Zusammenfassung der Agentenarten:**
 
@@ -13,7 +13,7 @@ Unsere KI-Agenten decken eine breite Palette an Funktionen ab – von schnellen 
 | Zielorientierte Agenten        | Preisoptimierung, Disposition, Automatisierungen | Selbstständige Planung, Zielverfolgung                  | 🟢 Sofort einsetzbar               |
 | Utility-Agenten                | Finance, Logistik                              | Optimale Entscheidungen nach Kosten/Nutzen/Risiko       | 🟡 In Entwicklung / skalierbar    |
 | Multi-Agenten-Systeme (Crews) | Sales, Support, Marketing, Reporting           | Zusammenarbeit mehrerer Agenten, Prozessautomatisierung | 🟡 Pilotphase                     |
-| Planungs-Agenten               | Produktionsplanung, Projektmanagement          | Automatisierte Ablaufplanung, Ressourceneffizienz       | 🟡 In Entwicklung                  |
+| Planungs-Agenten               | Produktionsplanung, Projektmanagement          | Automatisierte Ablaufplanung, Ressourceneffizienz       | ⚙️ In Entwicklung                  |
 | Prognose-Agenten               | Umsatz, Nachfrage, Supply-Chain               | Früherkennung von Trends, präzisere Forecasts           | 🟢 Sofort einsetzbar               |
 | Überwachungs-Agenten           | IT, Security, Compliance                        | Permanente Systemüberwachung, Echtzeit-Alerts           | 🟢 Sofort einsetzbar               |
 | Interaktions-Agenten           | Kundenservice, HR, Chatbots                     | Natürliche Kommunikation, schnelle Bearbeitung von Anfragen | 🟢 Sofort einsetzbar           |
