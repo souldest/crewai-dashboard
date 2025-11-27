@@ -1,7 +1,6 @@
+# agentenarten.py
 
 AGENTENARTEN = """
-<h1>Arten von KI-Agenten – sofort einsatzbereit und zukunftssicher</h1>
-
 Unsere KI-Agenten decken eine breite Palette an Funktionen ab – von schnellen Automationen über datengetriebene Analysen bis hin zu komplexen Multi-Agenten-Systemen. Sie helfen Unternehmen, Prozesse zu beschleunigen, Fehler zu reduzieren und Entscheidungen auf Basis präziser Daten zu treffen – rund um die Uhr, skalierbar und sicher.
 
 **Zusammenfassung der Agentenarten:**
@@ -33,11 +32,11 @@ Unsere KI-Agenten decken eine breite Palette an Funktionen ab – von schnellen 
 - **Planungs-Agenten** – automatisierte Produktions- und Projektplanung  
 
 **Technologien dahinter:**  
-- **KI & Machine Learning:** NLP, Deep Learning, Predictive Analytics  
-- **Automatisierung & RPA:** Prozessautomatisierung, Scheduling Engines  
-- **Datenanalyse & BI:** Python, R, SQL, BI-Tools  
-- **Cloud & Infrastruktur:** AWS, Azure, Docker, APIs  
-- **Multi-Agenten-Koordination:** Orchestrierung, Messaging-Queues, Event-Driven Architecture  
+- KI & Machine Learning: NLP, Deep Learning, Predictive Analytics  
+- Automatisierung & RPA: Prozessautomatisierung, Scheduling Engines  
+- Datenanalyse & BI: Python, R, SQL, BI-Tools  
+- Cloud & Infrastruktur: AWS, Azure, Docker, APIs  
+- Multi-Agenten-Koordination: Orchestrierung, Messaging-Queues, Event-Driven Architecture  
 
 Mit CrewAI erhalten Unternehmen **sofort einsatzbereite, messbare Ergebnisse, Entlastung für Teams und nachhaltige KI-Lösungen**, die direkt Umsatz, Effizienz und Kundenzufriedenheit steigern – heute und morgen.
 """

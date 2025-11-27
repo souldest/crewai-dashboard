@@ -4,7 +4,7 @@ import plotly.express as px
 from datetime import datetime
 
 # Marketing Texte & Agenten
-from agentenarten import get_agent_types_markdown
+from agentenarten import AGENTENARTEN
 from technologien import TECHNOLOGIEN
 from marketing_demo import HEADER, CREWAI, AGENTEN, VORTEILE, KONTAKT
 from sales_leads import generate_all_leads
@@ -57,13 +57,40 @@ st.markdown(
 
 
 # Agenten Arten
-# Anzeige im gleichen Stil wie CrewAI-Abschnitt
+# Schwarzen Hintergrund setzen
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #000000;
+        color: #ffffff;
+    }
+    table {
+        color: #ffffff;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 10px;
+    }
+    th {
+        text-align: left;
+        border-bottom: 1px solid #ffffff;
+        padding: 6px;
+    }
+    td {
+        padding: 4px 6px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Anzeige 
 st.markdown(
     f"""
     <div style='padding:20px; background-color:#4da6ff; color:white; border-radius:15px; margin-bottom:20px; max-width:900px;
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);'>
         <h2 style='font-size:24px; margin-bottom:12px; text-align:center;'>Arten von KI-Agenten – sofort einsatzbereit und zukunftssicher</h2>
-        <p style='font-size:18px; line-height:1.6;'>{AGENTENARTEN}</p>
+        {AGENTENARTEN}
     </div>
     """,
     unsafe_allow_html=True
