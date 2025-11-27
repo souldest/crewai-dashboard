@@ -1,6 +1,6 @@
 def get_agent_types_markdown():
     return """
-**Arten von KI-Agenten – sofort einsatzbereit und zukunftssicher**
+<h1>Arten von KI-Agenten – sofort einsatzbereit und zukunftssicher</h1>
 
 Unsere KI-Agenten decken eine breite Palette an Funktionen ab – von schnellen Automationen über datengetriebene Analysen bis hin zu komplexen Multi-Agenten-Systemen. Sie helfen Unternehmen, Prozesse zu beschleunigen, Fehler zu reduzieren und Entscheidungen auf Basis präziser Daten zu treffen – **rund um die Uhr, skalierbar und sicher**.
 
