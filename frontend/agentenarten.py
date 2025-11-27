@@ -1,49 +1,29 @@
 def get_agent_types_markdown():
     return """
-    <div style='padding:20px; background-color:#4da6ff; color:white; border-radius:15px; 
-                margin-bottom:20px; max-width:900px; margin-left:auto; margin-right:auto;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.2);'>
+**Arten von KI-Agenten – sofort einsatzbereit für Ihr Unternehmen**
 
-        <h2 style='font-size:24px; margin-bottom:12px; text-align:center;'>Arten von KI-Agenten</h2>
+Unsere KI-Agenten decken eine breite Palette an Funktionen ab – von einfachen Automationen über datengetriebene Analysen bis hin zu komplexen Multi-Agenten-Systemen.  
 
-        <p style='font-size:18px; line-height:1.6;'>
-            Moderne KI-Agenten lassen sich in verschiedene Kategorien einteilen – je nach Zielsetzung,
-            Autonomie und Lernfähigkeit. Hier sind die wichtigsten Typen:
-        </p>
+Sie helfen Ihrem Unternehmen, Prozesse zu beschleunigen, Fehler zu reduzieren und Entscheidungen auf Basis präziser Daten zu treffen. Ganz gleich, ob Sie ein kleines Team haben oder ein großes Unternehmen: Unsere Agenten arbeiten **rund um die Uhr**, skalierbar und sicher, damit Sie sofort Ergebnisse sehen.  
 
-        <h3 style='font-size:20px; margin-top:20px; margin-bottom:8px;'>1. Reaktive Agenten</h3>
-        <p style='font-size:18px; line-height:1.6;'>
-            • reagieren sofort<br>
-            • kein Gedächtnis<br>
-            • ideal für Support, Chat & einfache Automationen
-        </p>
+| Agententyp                     | Einsatzbereich                                   | Vorteile                                                   |
+|--------------------------------|-------------------------------------------------|-----------------------------------------------------------|
+| **Reaktive Agenten**           | Support, Chat, einfache Automationen           | Schnelle Reaktionen, keine Historie nötig                |
+| **Modellbasierte Agenten**     | Analyse, Research, Dokumentverarbeitung       | Kontextbasierte Entscheidungen, präzise Ergebnisse      |
+| **Zielorientierte Agenten**    | Preisoptimierung, Disposition, Automatisierungen | Selbstständige Planung, Zielverfolgung                  |
+| **Utility-Agenten**            | Finance, Logistik                              | Optimale Entscheidungen nach Kosten/Nutzen/Risiko       |
+| **Multi-Agenten-Systeme (Crews)** | Sales-Pipelines, Support, Marketing, Reporting | Zusammenarbeit mehrerer Agenten, komplette Prozessautomatisierung |
+| **Planungs-Agenten**           | Produktionsplanung, Projektmanagement          | Automatisierte Ablaufplanung, Ressourceneffizienz       |
+| **Prognose-Agenten**           | Umsatz, Nachfrage, Supply-Chain               | Früherkennung von Trends, präzisere Forecasts           |
+| **Überwachungs-Agenten**       | IT, Security, Compliance                        | Permanente Systemüberwachung, Echtzeit-Alerts           |
+| **Interaktions-Agenten**       | Kundenservice, HR, Chatbots                     | Natürliche Kommunikation, schnelle Bearbeitung von Anfragen |
+| **Empfehlungs-Agenten**        | Marketing, E-Commerce                           | Personalisierte Empfehlungen, Umsatzsteigerung          |
 
-        <h3 style='font-size:20px; margin-top:20px; margin-bottom:8px;'>2. Modellbasierte Agenten</h3>
-        <p style='font-size:18px; line-height:1.6;'>
-            • nutzen Kontext & Historie<br>
-            • treffen bessere Entscheidungen<br>
-            • perfekt für Analyse, Research, Dokumentverarbeitung
-        </p>
+**Warum Sie sofort starten sollten:**  
+- Setzen Sie auf **fertige Lösungen**, keine lange Entwicklungszeit.  
+- Profitieren Sie von **maßgeschneiderten Agenten**, die direkt auf Ihre Prozesse abgestimmt sind.  
+- Steigern Sie **Umsatz, Effizienz und Kundenzufriedenheit**, während Ihr Team entlastet wird.  
+- Nutzen Sie unsere **sichere, skalierbare Plattform**, auch ohne eigenes Data-Team.  
 
-        <h3 style='font-size:20px; margin-top:20px; margin-bottom:8px;'>3. Zielorientierte Agenten</h3>
-        <p style='font-size:18px; line-height:1.6;'>
-            • planen Schritte selbstständig<br>
-            • verfolgen ein definiertes Ziel<br>
-            • ideal für Preisoptimierung, Disposition, Automatisierungen
-        </p>
-
-        <h3 style='font-size:20px; margin-top:20px; margin-bottom:8px;'>4. Utility-Agenten</h3>
-        <p style='font-size:18px; line-height:1.6;'>
-            • bewerten Kosten, Nutzen, Risiko<br>
-            • entscheiden nach optimaler Lösung<br>
-            • besonders wichtig im Finance- & Logistik-Bereich
-        </p>
-
-        <h3 style='font-size:20px; margin-top:20px; margin-bottom:8px;'>5. Multi-Agenten-Systeme (Crews)</h3>
-        <p style='font-size:18px; line-height:1.6;'>
-            • mehrere Agenten arbeiten zusammen<br>
-            • können komplette Prozesse automatisieren<br>
-            • perfekt für Sales-Pipelines, Support, Marketing, Reporting
-        </p>
-    </div>
-    """
+Mit CrewAI erhalten Sie nicht nur Agenten – Sie erhalten **echte Unterstützung, messbare Ergebnisse und nachhaltige KI-Lösungen**, die Ihr Unternehmen sofort voranbringen.
+"""
