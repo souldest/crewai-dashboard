@@ -69,13 +69,12 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Karte mit HTML, hier kommt KEIN </div> aus agentenarten.py
 st.markdown(
     f"""
     <div style='padding:20px; background-color:#4da6ff; color:white; border-radius:15px; margin-bottom:20px; max-width:900px;
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);'>
         <h2 style='font-size:24px; margin-bottom:12px; text-align:center;'>Arten von KI-Agenten – sofort einsatzbereit und zukunftssicher</h2>
-        {AGENTENARTEN}
+        <p style='font-size:18px; line-height:1.6;'>{AGENTENARTEN}</p>
     </div>
     """,
     unsafe_allow_html=True
