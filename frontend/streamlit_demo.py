@@ -4,6 +4,7 @@ import plotly.express as px
 from datetime import datetime
 
 # Marketing Texte & Agenten
+from Agentenarten import get_agent_types_markdown
 from technologien import TECHNOLOGIEN
 from marketing_demo import HEADER, CREWAI, AGENTEN, VORTEILE, KONTAKT
 from sales_leads import generate_all_leads
@@ -53,6 +54,8 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+st.markdown(get_agent_types_markdown(), unsafe_allow_html=True)
 
 # -----------------------------
 # Agenten nach Funktion direkt unter CREWAI
