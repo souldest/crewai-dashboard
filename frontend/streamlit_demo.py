@@ -57,34 +57,19 @@ st.markdown(
 
 
 # Agenten Arten
-# Schwarzen Hintergrund setzen
 st.markdown(
     """
     <style>
-    body {
-        background-color: #000000;
-        color: #ffffff;
-    }
-    table {
-        color: #ffffff;
-        border-collapse: collapse;
-        width: 100%;
-        margin-top: 10px;
-    }
-    th {
-        text-align: left;
-        border-bottom: 1px solid #ffffff;
-        padding: 6px;
-    }
-    td {
-        padding: 4px 6px;
-    }
+    body { background-color: #000000; color: #ffffff; }
+    table { color: #ffffff; border-collapse: collapse; width: 100%; margin-top: 10px; }
+    th { text-align: left; border-bottom: 1px solid #ffffff; padding: 6px; }
+    td { padding: 4px 6px; }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Anzeige 
+# Karte mit HTML, hier kommt KEIN </div> aus agentenarten.py
 st.markdown(
     f"""
     <div style='padding:20px; background-color:#4da6ff; color:white; border-radius:15px; margin-bottom:20px; max-width:900px;
