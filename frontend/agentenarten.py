@@ -41,4 +41,3 @@ Unsere KI-Agenten decken eine breite Palette an Funktionen ab – von schnellen 
 
 Mit CrewAI erhalten Unternehmen **sofort einsatzbereite, messbare Ergebnisse, Entlastung für Teams und nachhaltige KI-Lösungen**, die direkt Umsatz, Effizienz und Kundenzufriedenheit steigern – heute und morgen.
 """
-

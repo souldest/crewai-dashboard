@@ -56,6 +56,7 @@ st.markdown(
 )
 
 
+# Agenten Arten
 # Schwarzen Hintergrund für das Dashboard setzen
 st.markdown(
     """
@@ -67,7 +68,8 @@ st.markdown(
     </style>
     """,
     unsafe_allow_html=True
-) # Anzeige in Streamlit mit hellblauer Karte und weißer Schrift
+)
+# Anzeige in Streamlit mit hellblauer Karte und weißer Schrift
 st.markdown(
     f"""
     <div style='background-color:#1a73e8; color:#ffffff; padding:20px; border-radius:12px;'>
