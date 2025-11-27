@@ -55,10 +55,31 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown(get_agent_types_markdown(), unsafe_allow_html=True)
+
+# Schwarzen Hintergrund für das Dashboard setzen
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #000000;
+        color: #ffffff;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+) # Anzeige in Streamlit mit hellblauer Karte und weißer Schrift
+st.markdown(
+    f"""
+    <div style='background-color:#1a73e8; color:#ffffff; padding:20px; border-radius:12px;'>
+    {get_agent_types_markdown()}
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 
 # -----------------------------
-# Agenten nach Funktion direkt unter CREWAI
+# Agenten nach Funktion 
 # -----------------------------
 st.markdown("<h2 style='text-align:center; color:white; margin-top:20px;'>Agenten nach Funktion</h2>", unsafe_allow_html=True)
 for func_name, func_text in AGENTEN.items():
