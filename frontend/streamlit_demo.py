@@ -125,7 +125,6 @@ branches = [
 selected_branch = st.sidebar.selectbox("Branche auswählen", branches)
 
 sections = [
-    "Branchenübersicht",
     "Sales Leads",
     "Akquiseplan",
     "Proposal",
